@@ -9,5 +9,5 @@ export default {
 
     app.use(pinia)
     app.use(MessagePlugin)
-  }
+  },
 }

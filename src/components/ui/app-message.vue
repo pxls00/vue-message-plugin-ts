@@ -1,23 +1,23 @@
 <template>
   <li :class="[props.message ? props.message?.type : 'wait', 'message__item']">
     <div class="message__item__icon">
-      <slot v-if="!props.message?.type" name="message__icon-wait"></slot>
+      <slot v-if="!props.message?.type" name="message__icon-wait" />
       <slot
         v-if="props.message?.type === 'success'"
         name="message__icon-success"
-      ></slot>
+      />
       <slot
         v-if="props.message?.type === 'error'"
         name="message__icon-error"
-      ></slot>
+      />
       <slot
         v-if="props.message?.type === 'warning'"
         name="message__icon-warning"
-      ></slot>
+      />
       <div
         v-if="!props.message && !$slots['message__icon-wait']"
         class="lds-hourglass"
-      ></div>
+      />
       <div
         v-if="
           props.message?.type === 'success' && !$slots['message__icon-success']
@@ -29,7 +29,7 @@
       <div
         v-if="props.message?.type === 'error' && !$slots['message__icon-error']"
         class="message__item__error"
-      ></div>
+      />
       <div
         v-if="
           props.message?.type === 'warning' && !$slots['message__icon-warning']
@@ -40,22 +40,22 @@
       </div>
     </div>
     <div class="message__item__title">
-      <slot v-if="!props.message?.type" name="message__title-wait"></slot>
+      <slot v-if="!props.message?.type" name="message__title-wait" />
       <slot
         v-if="props.message?.type === 'success'"
         name="message__title-success"
         :title="props.message?.title"
-      ></slot>
+      />
       <slot
         v-if="props.message?.type === 'error'"
         name="message__title-error"
         :title="props.message?.title"
-      ></slot>
+      />
       <slot
         v-if="props.message?.type === 'warning'"
         name="message__title-warning"
         :title="props.message?.title"
-      ></slot>
+      />
       <p v-if="!$slots['message__title-success']">
         {{ props.message?.title || 'Wait please' }}
       </p>
@@ -83,11 +83,11 @@ export default defineComponent({
 import type Message from '@/interfaces/messages/message-item.js'
 
 interface ToastProps {
-  message?: Message;
+  message?: Message
 }
 const props = defineProps<ToastProps>()
 const emits = defineEmits<{
-  (e: 'remove', message: Message): Message;
+  (e: 'remove', message: Message): Message
 }>()
 
 function removeMessage (message: Message | undefined): void {
