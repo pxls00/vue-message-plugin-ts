@@ -1,6 +1,6 @@
 {
   "name": "test-vue-message-plugin",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "main": "./dist/vue-messages.umd.js",
   "module": "./dist/vue-messages.es.js",
   "type": "module",
