@@ -10,7 +10,6 @@ import './assets/main.scss'
 // messages
 import toast from '@/plugins/message'
 
-
 const app = createApp(App)
 
 const pinia = createPinia()

@@ -6,7 +6,7 @@ import type MessageItem from '@/interfaces/messages/message-item'
 export const useMessagesStore = defineStore('messages', () => {
   const messages = ref<MessageItem[]>([])
   const wait = ref<boolean>(false)
-  
+
   function newMessage (message: MessageItem): void {
     messages.value.push(message)
 

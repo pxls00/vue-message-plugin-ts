@@ -35,6 +35,7 @@ export default {
     }
 
     app.provide('message', message)
+    
     app.config.globalProperties.$message = message
   },
 }

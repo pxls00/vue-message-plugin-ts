@@ -1,12 +1,8 @@
 <template>
-  <TransitionGroup
-    name="list"
-    tag="ul"
-    class="message__list"
-  >
+  <TransitionGroup name="list" tag="ul" class="message__list">
     <AppMessage v-if="wait">
       <template v-for="(_, slot) in $slots" #[slot]>
-        <slot :name="slot"></slot>
+        <slot :name="slot" />
       </template>
     </AppMessage>
     <AppMessage
@@ -16,7 +12,7 @@
       @remove="removeMessage"
     >
       <template v-for="(_, slot) in $slots" #[slot]="data">
-        <slot :name="slot" :item="{...data}"></slot>
+        <slot :name="slot" :item="{ ...data }" />
       </template>
     </AppMessage>
   </TransitionGroup>
@@ -46,104 +42,6 @@ function removeMessage (message: Message): void {
 </script>
 
 <style lang="scss">
-@import 'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap';
-
-
-.message__item {
-  position: relative;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  padding: 5px 10px;
-  height: 50px;
-  padding-right: 30px;
-  &.error {
-    background: rgb(210, 10, 10);
-  }
-  &.wait {
-    padding-right: 10px !important;
-    background: rgb(201, 198, 20);
-  }
-  &.success {
-    background: rgb(75, 170, 30);
-  }
-  &.warning {
-    background: rgb(201, 198, 20);
-  }
-  &__title {
-    p {
-      font-family: 'Noto Sans';
-      font-size: 16px;
-      color: rgb(255, 255, 255);
-      padding: 0 10px;
-      margin: 0;
-    }
-  }
-  &__warning {
-    color: rgb(255, 255, 255);
-    font-size: 26px;
-    font-weight: 900;
-    font-family: 'Noto Sans';
-  }
-  &__tick {
-    font-size: 24px;
-    font-weight: 900;
-    color: rgb(255, 255, 255);
-  }
-  &__error {
-    height: 30px;
-    width: 30px;
-    background: rgb(255, 255, 255);
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &::after,
-    &::before {
-      content: '';
-      height: 24px;
-      width: 3px;
-      border-radius: 5px;
-      position: absolute;
-      background: rgb(210, 10, 10);
-    }
-    &::after {
-      transform: rotate(-45deg);
-    }
-    &::before {
-      transform: rotate(45deg);
-    }
-  }
-  &__close {
-    outline: none;
-    border: none;
-    background: none;
-    font-size: 24px;
-    font-family: 'Noto Sans';
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    color: rgba(195, 195, 195);
-    transition: 0.2s all;
-    transform: translateY(-51%);
-    &:hover {
-      color: rgb(255, 255, 255);
-    }
-  }
-
-  &__icon {
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 .lds-hourglass {
   position: relative;
   width: 40px;
