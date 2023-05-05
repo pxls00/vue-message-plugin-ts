@@ -77,7 +77,7 @@ jobs:
     - uses: lowply/deploy-firebase@v0.0.5
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        FIREBASE_PROJECT: test-task-fb7b6
+        FIREBASE_PROJECT: vue-message-plugin-205f7
   
   publush:
     name: Publish to NPM
