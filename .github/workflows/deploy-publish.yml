@@ -96,9 +96,10 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
       
       - name: 'Publish'
-        run: 'npm publish --access public'
+        run: 'npm publish'
         env: 
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
   
