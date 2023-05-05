@@ -1,5 +1,5 @@
 {
-  "name": "test-vue-message-plugin",
+  "name": "vue-message-plugin",
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",
