@@ -77,7 +77,7 @@ jobs:
     - uses: lowply/deploy-firebase@v0.0.5
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        FIREBASE_PROJECT: test-task-fb7b6
+        FIREBASE_PROJECT: vue-message-plugin-205f7
   
   publush:
     name: Publish to NPM
@@ -96,6 +96,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
       
       - name: 'Publish'
         run: 'npm publish --access public'
@@ -122,4 +123,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: pxls00/test_task_image:latest
+          tags: pxls00/vue-plugin-message:latest
