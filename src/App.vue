@@ -1,14 +1,10 @@
 <template>
-  <app-messages />
+  <v-message />
+  <DemoComponent />
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
-import type MessagePlugin from '@/interfaces/messages/message-plugin'
-
-const message = inject('message') as MessagePlugin
-
-message.waitAction()
+import DemoComponent from '@/components/demo.vue'
 </script>
 
 <style scoped></style>
