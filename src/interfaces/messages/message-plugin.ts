@@ -1,4 +1,4 @@
-import type NewMessageItem from '@/interfaces/messages/message-item-base'
+import type NewMessageItem from '@/interfaces/messages/new-message-item'
 import type MessageItem from '@/interfaces/messages/message-item'
 
 interface Toast {

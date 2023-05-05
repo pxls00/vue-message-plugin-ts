@@ -8,7 +8,7 @@ export const useMessagesStore = defineStore('messages', () => {
   const wait = ref<boolean>(false)
 
   function newMessage (message: MessageItem): void {
-    messages.value.unshift(message)
+    messages.value.push(message)
 
     if (message.duration) {
       setTimeout(() => removeMessage(message), message.duration)

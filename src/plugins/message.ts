@@ -1,6 +1,5 @@
 import { useMessagesStore } from '@/stores/messages'
 import createMessage from '@/stores/messages/helpers/message-create'
-import MessagesList from '@/components/messages-list.vue'
 
 import type NewMessageItem from '@/interfaces/messages/new-message-item'
 import type MessageItem from '@/interfaces/messages/message-item'
@@ -36,7 +35,7 @@ export default {
     }
 
     app.provide('message', message)
-    app.component('VMessage', MessagesList)    
+    
     app.config.globalProperties.$message = message
   },
 }

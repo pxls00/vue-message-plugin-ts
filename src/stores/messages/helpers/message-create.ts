@@ -1,8 +1,16 @@
-import type MessageItemBase from '@/interfaces/messages/message-item-base'
+import type NewMessageItem from '@/interfaces/messages/new-message-item'
 import type MessageItem from '@/interfaces/messages/message-item'
 
-export default function createMessage (message: MessageItemBase): MessageItem {
-  const messageItem: MessageItem = { ...message, id: Date.now().toString()}
+export default function createMessage (message: NewMessageItem): MessageItem {
+  const messageItem: MessageItem = {
+    title: message.title,
+    type: message.type,
+    id: Date.now().toString(),
+  }
+
+  if (message.duration) {
+    messageItem.duration = message.duration
+  }
 
   return messageItem
 }
