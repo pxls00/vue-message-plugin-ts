@@ -1,0 +1,1 @@
+{"version":3,"file":"message-item.d.ts","sourceRoot":"","sources":["../../../src/interfaces/messages/message-item.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,MAAM,uBAAuB,CAAA;AAC/C,OAAO,KAAK,cAAc,MAAM,yCAAyC,CAAA;AAEzE,UAAU,OAAQ,SAAQ,cAAc;IACtC,EAAE,EAAE,MAAM,CAAA;CACX;AAED,eAAe,OAAO,CAAA"}
