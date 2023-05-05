@@ -1,69 +1,169 @@
 @import 'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap';
+@import './colors.scss';
 
-.message__item {
-  position: relative;
+body {
+  background: $purple-80;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans';
+}
+
+ul {
+  list-style: none;
+}
+
+.btn-wrapper {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  gap: 12px;
+  margin-top: 400px;
+}
+
+.button {
+  border: none;
+  outline: none;
+  background: $purple;
+  padding: 5px 15px 6px;
   border-radius: 6px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 5px 10px;
-  height: 50px;
-  padding-right: 30px;
-  &.error {
-    background: rgb(210, 10, 10);
+  font-family: 'Noto Sans';
+  color: $white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    opacity: .8;
   }
-  &.wait {
-    padding-right: 10px !important;
-    background: rgb(201, 198, 20);
+  &--wait-warning {
+    background: $wait-warning;
   }
-  &.success {
-    background: rgb(75, 170, 30);
+  &--error {
+    background: $error;
   }
-  &.warning {
-    background: rgb(201, 198, 20);
+  &--success {
+    background: $success;
+  }
+}
+
+.message__list {
+  max-width: 370px;
+  width: 100%;
+  margin-left: auto;
+  margin-top: 10px;
+  margin-right: 10px;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.message{
+  &__item {
+    position: relative;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    height: 50px;
+    margin-bottom: 10px;
+    padding-right: 30px;
+    background: $white;
+    &--error {
+      background: $error;
+    }
+    &--wait {
+      padding-right: 10px !important;
+      background: $wait-warning;
+    }
+    &--success {
+      background: $success;
+    }
+    &--warning {
+      background: $wait-warning;
+    }
+  }
+  &__img {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-error {
+      height: 30px;
+      width: 30px;
+      background: $white;
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &::after,
+      &::before {
+        content: '';
+        height: 24px;
+        width: 3px;
+        border-radius: 5px;
+        position: absolute;
+        background: $error;
+      }
+      &::after {
+        transform: rotate(-45deg);
+      }
+      &::before {
+        transform: rotate(45deg);
+      }
+    }
+    &-wait {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &::after {
+        content: ' ';
+        display: block;
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        margin: 8px;
+        box-sizing: border-box;
+        border: 16px solid $white;
+        border-color: $white transparent $white transparent;
+        animation: lds-hourglass 1.2s infinite;
+      }
+    }
+    &-success {
+      font-size: 24px;
+      font-weight: 900;
+      color: $white;
+    }
+    &-custom {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    &-warning {
+      color: $white;
+      font-size: 26px;
+      font-weight: 900;
+    }
   }
   &__title {
     p {
-      font-family: 'Noto Sans';
       font-size: 16px;
-      color: rgb(255, 255, 255);
+      color: $white;
       padding: 0 10px;
       margin: 0;
-    }
-  }
-  &__warning {
-    color: rgb(255, 255, 255);
-    font-size: 26px;
-    font-weight: 900;
-    font-family: 'Noto Sans';
-  }
-  &__tick {
-    font-size: 24px;
-    font-weight: 900;
-    color: rgb(255, 255, 255);
-  }
-  &__error {
-    height: 30px;
-    width: 30px;
-    background: rgb(255, 255, 255);
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &::after,
-    &::before {
-      content: '';
-      height: 24px;
-      width: 3px;
-      border-radius: 5px;
-      position: absolute;
-      background: rgb(210, 10, 10);
-    }
-    &::after {
-      transform: rotate(-45deg);
-    }
-    &::before {
-      transform: rotate(45deg);
     }
   }
   &__close {
@@ -79,18 +179,36 @@
     position: absolute;
     right: 10px;
     top: 50%;
-    color: rgba(195, 195, 195);
+    color: $light-grey;
     transition: 0.2s all;
     transform: translateY(-51%);
     &:hover {
-      color: rgb(255, 255, 255);
+      color: $white;
     }
   }
+}
 
-  &__icon {
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
   }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) scale(.5);
 }

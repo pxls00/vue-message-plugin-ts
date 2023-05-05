@@ -50,40 +50,7 @@ module.exports = {
     'space-in-parens': ['error', 'never'],
     'array-bracket-spacing': ['error', 'never'],
     // 'comma-dangle': ['error', 'never'],
-    'max-params': ['error', 3],
-    'padding-line-between-statements': [
-      'error',
-      {
-        blankLine: 'always',
-        prev: ['const', 'let', 'var'],
-        next: '*',
-      },
-      {
-        blankLine: 'any',
-        prev: ['const', 'let', 'var'],
-        next: ['const', 'let', 'var'],
-      },
-      {
-        blankLine: 'always',
-        prev: 'import',
-        next: 'export',
-      },
-      {
-        blankLine: 'always',
-        prev: '*',
-        next: ['throw', 'return', 'function', 'debugger'],
-      },
-      {
-        blankLine: 'always',
-        prev: 'debugger',
-        next: '*',
-      },
-      {
-        blankLine: 'always',
-        prev: '*',
-        next: 'multiline-block-like',
-      },
-    ],
+    'max-params': ['error', 4],
     'no-async-promise-executor': 0, // allows using an async function as a Promise executor.
     'no-undef': 'warn',
     'no-useless-catch': 'off', // TODO: research how to fix no-useless-catch
