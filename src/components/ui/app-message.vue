@@ -86,7 +86,7 @@ const emits = defineEmits<{
   (e: 'remove', message: Message): Message
 }>()
 
-function removeMessage (message: Message | undefined): void {
+function removeMessage (message: Message): void {
   if (message) {
     emits('remove', message)
   }

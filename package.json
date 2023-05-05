@@ -1,7 +1,15 @@
 {
   "name": "test-vue-message-plugin",
-  "version": "0.1.3",
+  "version": "0.0.1",
   "type": "module",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "vue-message",
+    "vue-toast",
+    "vue-notification-ts",
+    "vue-message-ts"
+  ],
   "exports": {
     ".": "./dist/index",
     "./dist/style.css": "./dist/style.css"
@@ -10,6 +18,10 @@
   "files": [
     "dist"
   ],
+  "author": {
+    "name": "Pxls00",
+    "email": "abdurahimnasirov123@gmail.com"
+  },
   "main": "dist/index",
   "typings": "./dist/index",
   "scripts": {

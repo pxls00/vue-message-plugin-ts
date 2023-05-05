@@ -2,7 +2,7 @@ import { useMessagesStore } from '@/stores/messages'
 import createMessage from '@/stores/messages/helpers/message-create'
 import MessagesList from '@/components/messages-list.vue'
 
-import type NewMessageItem from '@/interfaces/messages/new-message-item'
+import type NewMessageItem from '@/interfaces/messages/message-item-base'
 import type MessageItem from '@/interfaces/messages/message-item'
 import type Message from '@/interfaces/messages/message-plugin'
 
