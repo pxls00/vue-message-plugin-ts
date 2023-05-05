@@ -1,6 +1,6 @@
 {
-  "name": "vue-message-plugin",
-  "version": "0.0.1",
+  "name": "vue-message-plugin-ts",
+  "version": "0.0.2",
   "type": "module",
   "license": "MIT",
   "private": false,
