@@ -9,7 +9,6 @@ on:
 jobs:
   publish:
     name: Publish to NPM
-    needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:
