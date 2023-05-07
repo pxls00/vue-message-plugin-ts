@@ -5,9 +5,9 @@ import type MessageItemCLass from '@/interfaces/messages/types/message-class'
 interface Message {
   title: MessageItemFIeld | any
   duration?: number
-  type: MessageTypes,
-  img?: MessageItemFIeld,
-  class?: MessageItemCLass,
+  type: MessageTypes
+  img?: MessageItemFIeld
+  class?: MessageItemCLass
   key?: string
 }
 

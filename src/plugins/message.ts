@@ -6,16 +6,15 @@ import type MessageOptions from '@/interfaces/plugin-options'
 import type NewMessageItem from '@/interfaces/messages/message-item-base'
 import type MessageItem from '@/interfaces/messages/message-item'
 import type Message from '@/interfaces/messages/message-plugin'
-import type MessageItemWait from '@/interfaces/messages/message-item-wait';
+import type MessageItemWait from '@/interfaces/messages/message-item-wait'
 
 export default {
   install: (app: any, options?: MessageOptions) => {
     const store = useMessagesStore()
 
-    if(options?.position) {
-      store.position = options.position 
+    if (options?.position) {
+      store.position = options.position
     }
-
 
     function addNewMessage (message: NewMessageItem): void {
       const createdMessage: MessageItem = createMessage(message)
@@ -43,7 +42,7 @@ export default {
     }
 
     app.provide('message', message)
-    app.component('VMessage', MessagesList)    
+    app.component('VMessage', MessagesList)
     app.config.globalProperties.$message = message
   },
 }

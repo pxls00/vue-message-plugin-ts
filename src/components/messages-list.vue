@@ -1,6 +1,10 @@
 <template>
-  <TransitionGroup name="list" tag="ul" :class="['message__list', `message__list--${position}`]">
-    <AppMessage v-if="isWait" :message="wait || MESSAGE_WAIT_ACTION_CREDENTIALS">
+  <TransitionGroup
+    name="list"
+    tag="ul"
+    :class="['message__list', `message__list--${position}`]"
+  >
+    <AppMessage v-if="isWait" :message="messageWait">
       <template v-for="(_, slot) in $slots" #[slot]>
         <slot :name="slot" />
       </template>
@@ -29,18 +33,27 @@ export default defineComponent({
 <script lang="ts" setup>
 import { useMessagesStore } from '@/stores/messages'
 import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
 
 import AppMessage from '@/components/ui/app-message.vue'
+
 import MESSAGE_WAIT_ACTION_CREDENTIALS from '@/constants/message-wait'
 
+import type MessageWait from '@/interfaces/messages/message-item-wait'
 import type Message from '@/interfaces/messages/message-item'
 
 const store = useMessagesStore()
 
 const { messages, wait, position, isWait } = storeToRefs(store)
 
+const messageWait = computed<MessageWait>(() => {
+  if (wait.value) {
+    return wait.value
+  }
+  return MESSAGE_WAIT_ACTION_CREDENTIALS
+})
+
 function removeMessage (message: Message): void {
   store.removeMessage(message)
 }
-
 </script>

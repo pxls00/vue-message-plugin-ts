@@ -8,9 +8,9 @@ import type MessageItemWait from '@/interfaces/messages/message-item-wait'
 export const useMessagesStore = defineStore('messages', () => {
   const messages = ref<MessageItem[]>([])
   const isWait = ref<boolean>(false)
-  const wait = ref<Partial<MessageItemWait>>()
+  const wait = ref<MessageItemWait | null>(null)
   const position = ref<PositionMessages>('top-right')
-  
+
   function newMessage (message: MessageItem): void {
     messages.value.unshift(message)
 
@@ -26,7 +26,7 @@ export const useMessagesStore = defineStore('messages', () => {
   }
 
   function waitAction (message?: MessageItemWait) {
-    if(message) {
+    if (message) {
       wait.value = message
       wait.value.type = 'wait'
     }
@@ -34,9 +34,18 @@ export const useMessagesStore = defineStore('messages', () => {
   }
 
   function unwaitAction () {
-    wait.value = undefined
+    wait.value = null
     isWait.value = false
   }
 
-  return { messages, wait, position, isWait, removeMessage, newMessage, waitAction, unwaitAction }
+  return {
+    messages,
+    wait,
+    position,
+    isWait,
+    removeMessage,
+    newMessage,
+    waitAction,
+    unwaitAction,
+  }
 })

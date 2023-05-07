@@ -1,7 +1,7 @@
 import type MessageItemCLass from '@/interfaces/messages/types/message-class'
 
 interface MessageItemField {
-  value: string | any,
+  value: string | any
   class: MessageItemCLass
 }
 
