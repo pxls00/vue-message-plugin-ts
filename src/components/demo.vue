@@ -1,6 +1,10 @@
 <template>
   <div class="btn-wrapper">
-    <button type="button" class="button button--wait-warning" @click="waitAction">
+    <button
+      type="button"
+      class="button button--wait-warning"
+      @click="waitAction"
+    >
       Wait Action
     </button>
     <button type="button" class="button button--success" @click="successAction">
@@ -9,7 +13,11 @@
     <button type="button" class="button button--error" @click="errorAction">
       Error Action
     </button>
-    <button type="button" class="button button--wait-warning" @click="warningAction">
+    <button
+      type="button"
+      class="button button--wait-warning"
+      @click="warningAction"
+    >
       Warning Action
     </button>
     <button type="button" class="button" @click="randomAction">
@@ -22,7 +30,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'DemoComponent'
+  name: 'DemoComponent',
 })
 </script>
 
@@ -33,23 +41,27 @@ import type MessagePlugin from '@/interfaces/messages/message-plugin'
 const message = inject('message') as MessagePlugin
 
 function waitAction () {
-  message.waitAction()
+  message.waitAction({
+    title: 'Wait please your action ...',
+    img: '/vite.svg',
+    class: 'wait__actions',
+  })
 }
 function successAction () {
   message.addNewMessage({
     title: {
       value: 'Action success',
-      class: 'success__title-test'
+      class: 'success__title-test',
     },
     type: 'success',
-    class: 'succes__test'
+    class: 'succes__test',
   })
 }
 function errorAction () {
   message.addNewMessage({
     title: 'Action error',
     type: 'error',
-    duration: 5000
+    duration: 5000,
   })
 }
 function warningAction () {
@@ -63,12 +75,11 @@ function randomAction () {
   message.addNewMessage({
     title: {
       title: 'test',
-      body: 'hello'
+      body: 'hello',
     },
     type: 'custom',
-    img: '/public/images/avatar.jpg',
-    key: 'account'
+    img: '/vite.svg',
+    key: 'account',
   })
 }
-
 </script>

@@ -1,9 +1,8 @@
-import messageCreate from '@/stores/messages/helpers/message-create'
-import type IMessageItem from '@/interfaces/messages/message-item'
+import type MessageItemWait from '@/interfaces/messages/message-item-wait'
 
-const MESSAGE_WAIT_ACTION_CREDENTIALS: IMessageItem = messageCreate({
+const MESSAGE_WAIT_ACTION_CREDENTIALS: MessageItemWait = {
   title: 'Wait please ..',
-  type: 'wait'
-})
+  type: 'wait',
+}
 
 export default MESSAGE_WAIT_ACTION_CREDENTIALS

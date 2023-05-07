@@ -44,7 +44,7 @@ ul {
   cursor: pointer;
   transition: all 0.2s;
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
   &--wait-warning {
     background: $wait-warning;
@@ -60,15 +60,86 @@ ul {
 .message__list {
   max-width: 370px;
   width: 100%;
-  margin-left: auto;
-  margin-top: 10px;
-  margin-right: 10px;
+  margin: 10px;
   position: fixed;
   right: 0;
   top: 0;
+  &--top-right {
+    right: 0;
+    top: 0;
+  }
+  &--top-left {
+    left: 0;
+    top: 0;
+  }
+  &--bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+  &--bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+  &--top-center {
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  &--right-center {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  &--bottom-center {
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  &--left-center {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  &--top-right,
+  &--right-center,
+  &--bottom-right {
+    .list-enter-active,
+    .list-leave-active {
+      transition: all 0.3s ease;
+    }
+    .list-enter-from,
+    .list-leave-to {
+      opacity: 0;
+      transform: translateX(50%) scale(0.5);
+    }
+  }
+  &--top-left,
+  &--left-center,
+  &--bottom-left {
+    .list-enter-active,
+    .list-leave-active {
+      transition: all 0.3s ease;
+    }
+    .list-enter-from,
+    .list-leave-to {
+      opacity: 0;
+      transform: translateX(-50%) scale(0.5);
+    }
+  }
+  &--top-center {
+    .list-enter-active,
+    .list-leave-active {
+      transition: all 0.3s ease;
+    }
+    .list-enter-from,
+    .list-leave-to {
+      opacity: 0;
+      transform: translateY(-50%) scale(0.5);
+    }
+  }
 }
 
-.message{
+.message {
   &__item {
     position: relative;
     border-radius: 6px;
@@ -200,15 +271,4 @@ ul {
   100% {
     transform: rotate(1800deg);
   }
-}
-
-
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.3s ease;
-}
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(-50%) scale(.5);
 }
