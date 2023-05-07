@@ -33,7 +33,11 @@ import type MessagePlugin from '@/interfaces/messages/message-plugin'
 const message = inject('message') as MessagePlugin
 
 function waitAction () {
-  message.waitAction()
+  message.waitAction({
+    title: 'Wait please your action ...',
+    img: '/vite.svg',
+    class: 'wait__actions'
+  })
 }
 function successAction () {
   message.addNewMessage({
@@ -66,7 +70,7 @@ function randomAction () {
       body: 'hello'
     },
     type: 'custom',
-    img: '/public/images/avatar.jpg',
+    img: '/vite.svg',
     key: 'account'
   })
 }

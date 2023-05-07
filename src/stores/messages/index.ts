@@ -2,11 +2,15 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 import type MessageItem from '@/interfaces/messages/message-item'
+import type PositionMessages from '@/interfaces/types/position'
+import type MessageItemWait from '@/interfaces/messages/message-item-wait'
 
 export const useMessagesStore = defineStore('messages', () => {
   const messages = ref<MessageItem[]>([])
-  const wait = ref<boolean>(false)
-
+  const isWait = ref<boolean>(false)
+  const wait = ref<Partial<MessageItemWait>>()
+  const position = ref<PositionMessages>('top-right')
+  
   function newMessage (message: MessageItem): void {
     messages.value.unshift(message)
 
@@ -21,13 +25,18 @@ export const useMessagesStore = defineStore('messages', () => {
     )
   }
 
-  function waitAction () {
-    wait.value = true
+  function waitAction (message?: MessageItemWait) {
+    if(message) {
+      wait.value = message
+      wait.value.type = 'wait'
+    }
+    isWait.value = true
   }
 
   function unwaitAction () {
-    wait.value = false
+    wait.value = undefined
+    isWait.value = false
   }
 
-  return { messages, wait, removeMessage, newMessage, waitAction, unwaitAction }
+  return { messages, wait, position, isWait, removeMessage, newMessage, waitAction, unwaitAction }
 })

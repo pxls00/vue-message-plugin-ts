@@ -1,6 +1,6 @@
 <template>
-  <TransitionGroup name="list" tag="ul" class="message__list">
-    <AppMessage v-if="wait" :message="MESSAGE_WAIT_ACTION_CREDENTIALS">
+  <TransitionGroup name="list" tag="ul" :class="['message__list', `message__list--${position}`]">
+    <AppMessage v-if="isWait" :message="wait || MESSAGE_WAIT_ACTION_CREDENTIALS">
       <template v-for="(_, slot) in $slots" #[slot]>
         <slot :name="slot" />
       </template>
@@ -37,7 +37,7 @@ import type Message from '@/interfaces/messages/message-item'
 
 const store = useMessagesStore()
 
-const { messages, wait } = storeToRefs(store)
+const { messages, wait, position, isWait } = storeToRefs(store)
 
 function removeMessage (message: Message): void {
   store.removeMessage(message)
