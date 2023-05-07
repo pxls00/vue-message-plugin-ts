@@ -3,8 +3,8 @@ import type MessageItemCLass from '@/interfaces/messages/types/message-class'
 
 interface MessageWait {
   title: MessageItemFIeld | any
-  img?: MessageItemFIeld,
-  class?: MessageItemCLass,
+  img?: MessageItemFIeld
+  class?: MessageItemCLass
   type?: 'wait'
 }
 

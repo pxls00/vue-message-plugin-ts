@@ -26,12 +26,13 @@
   "typings": "./dist/index",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build": "run-p type-check lint:check build-only",
     "preview": "vite preview --port 8080",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
     "lint:check": "eslint src/ --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
-    "lint:fix": "prettier --write src/ && yarn lint:check --fix"
+    "lint:fix": "prettier --write src/ && yarn lint:check --fix",
+    "check:all": "run-p type-check lint:check"
   },
   "dependencies": {
     "pinia": "^2.0.33",
