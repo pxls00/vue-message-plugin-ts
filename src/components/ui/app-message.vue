@@ -34,7 +34,6 @@
         >
       </slot>
     </div>
-    {{ props.message.key }}
     <div class="message__title">
       <slot 
         :name="`message__title-${props.message.type}`" 
@@ -55,7 +54,7 @@
       v-if="props.message.type !== 'wait'"
       type="button"
       class="message__close"
-      @click="removeMessage(props.message)"
+      @click="removeMessage(props.message as Message)"
     >
       <slot name="message__delete-btn">
         &times;
@@ -77,9 +76,10 @@ export default defineComponent({
 import getMessageItemClass from '@/stores/messages/helpers/get-message-class'
 
 import type Message from '@/interfaces/messages/message-item'
+import type MessageWait from '@/interfaces/messages/message-item-wait'
 
 interface IProps {
-  message: Message
+  message: Message | MessageWait
 }
 const props = defineProps<IProps>()
 const emits = defineEmits<{
@@ -87,8 +87,8 @@ const emits = defineEmits<{
 }>()
 
 function removeMessage (message: Message): void {
-  if (message) {
-    emits('remove', message)
+  if (message && message.type !== 'wait') {
+    emits('remove', message as Message)
   }
 }
 </script>
