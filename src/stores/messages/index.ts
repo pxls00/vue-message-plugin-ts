@@ -12,7 +12,7 @@ export const useMessagesStore = defineStore('messages', () => {
   const position = ref<PositionMessages>('top-right')
 
   function newMessage (message: MessageItem): void {
-    messages.value.unshift(message)
+    messages.value.push(message)
 
     if (message.duration) {
       setTimeout(() => removeMessage(message), message.duration)

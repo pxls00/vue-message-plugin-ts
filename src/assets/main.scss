@@ -259,6 +259,12 @@ ul {
   }
 }
 
+.message__item--custom {
+  p {
+    color: black
+  }
+}
+
 @keyframes lds-hourglass {
   0% {
     transform: rotate(0);

@@ -43,7 +43,6 @@ const message = inject('message') as MessagePlugin
 function waitAction () {
   message.waitAction({
     title: 'Wait please your action ...',
-    img: '/vite.svg',
     class: 'wait__actions',
   })
 }
@@ -73,10 +72,7 @@ function warningAction () {
 }
 function randomAction () {
   message.addNewMessage({
-    title: {
-      title: 'test',
-      body: 'hello',
-    },
+    title: 'Custom message',
     type: 'custom',
     img: '/vite.svg',
     key: 'account',
