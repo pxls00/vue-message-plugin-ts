@@ -1,7 +1,7 @@
 import type PositionMessages from './types/position'
 
-interface PluginOptions {
+interface MessagesOption {
   position?: PositionMessages
 }
 
-export default PluginOptions
+export default MessagesOption
