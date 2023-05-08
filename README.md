@@ -4,7 +4,7 @@ A message plugin base on Vue with Typescript support
 
 > supports only Vue 3
 
-![Preview](/public/preview.png)
+![Preview](https://github.com/pxls00/vue-message-plugin-ts/blob/master/public/preview.png)
 
 [Live Demo](https://github.com/pxls00/vue-message-plugin-ts)
 
