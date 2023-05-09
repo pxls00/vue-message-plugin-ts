@@ -1,10 +1,11 @@
 import type NewMessageItem from '@/interfaces/messages/message-item-base';
 import type MessageItem from '@/interfaces/messages/message-item';
-interface Toast {
+import type MessageItemWait from '@/interfaces/messages/message-item-wait';
+interface Messages {
     addNewMessage(message: NewMessageItem): void;
     removeMessage(message: MessageItem): void;
-    waitAction(): void;
+    waitAction(message?: MessageItemWait): void;
     stopAction(): void;
 }
-export default Toast;
+export default Messages;
 //# sourceMappingURL=message-plugin.d.ts.map
