@@ -47,7 +47,7 @@ function warningAction () {
 
   template: '',
 
-  style: ''
+  style: '',
 }
 
 export default code

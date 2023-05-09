@@ -1,6 +1,6 @@
 interface CodeItem {
-  template: string,
-  script: string,
+  template: string
+  script: string
   style: string
 }
 

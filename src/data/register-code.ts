@@ -23,7 +23,7 @@ app.mount('#app')`,
   <router-view />
 </template>`,
 
-  style: ''
+  style: '',
 }
 
 export default code

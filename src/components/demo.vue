@@ -85,9 +85,9 @@ function randomAction () {
     title: {
       value: {
         title: 'Scott',
-        body: `I'm Alfa in wolfpack`,
+        body: 'I\'m Alfa in wolfpack',
       },
-      class: ['custom-profile']
+      class: ['custom-profile'],
     },
     type: 'custom',
     img: '/vite.svg',

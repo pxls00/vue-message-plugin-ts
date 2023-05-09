@@ -29,7 +29,7 @@ ul {
   margin-top: auto;
   position: fixed;
   left: 10px;
-  top: 10px
+  top: 10px;
 }
 
 .button {
@@ -268,7 +268,7 @@ ul {
 
 .message__item--custom {
   p {
-    color: black
+    color: black;
   }
 }
 
@@ -291,7 +291,7 @@ ul {
     font-size: 34px;
     color: black;
     text-decoration: none;
-    transition: .2s;
+    transition: 0.2s;
     &:hover {
       color: rgb(68, 68, 68);
     }
@@ -346,17 +346,17 @@ ul {
 
     /* Track */
     &::-webkit-scrollbar-track {
-      background: #f1f1f1; 
+      background: #f1f1f1;
     }
-    
+
     /* Handle */
     &::-webkit-scrollbar-thumb {
-      background: #888; 
+      background: #888;
     }
 
     /* Handle on hover */
     &::-webkit-scrollbar-thumb:hover {
-      background: #555; 
+      background: #555;
     }
     &-language {
       position: absolute;
@@ -394,8 +394,8 @@ footer {
     text-decoration: none;
     font-size: 24px;
     font-weight: 700;
-    opacity: .8;
-    transition: .2s;
+    opacity: 0.8;
+    transition: 0.2s;
     &:hover {
       opacity: 1;
     }

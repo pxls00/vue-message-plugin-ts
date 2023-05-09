@@ -1,12 +1,12 @@
 <template>
   <v-message>
-    <template #message__title-custom="{item: {item}}">
+    <template #message__title-custom="{ item: { item } }">
       <div class="account">
         <h3 class="account-title">
-          {{item.title.value.title}}
+          {{ item.title.value.title }}
         </h3>
         <p class="account-body">
-          {{item.title.value.body}}
+          {{ item.title.value.body }}
         </p>
       </div>
     </template>

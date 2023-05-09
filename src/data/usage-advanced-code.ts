@@ -40,7 +40,7 @@ function customMessage () {
   <router-view />
 </template>`,
 
-  style: ''
+  style: '',
 }
 
 export default code
