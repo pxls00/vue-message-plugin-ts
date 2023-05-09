@@ -1,6 +1,6 @@
 {
   "name": "vue-message-plugin-ts",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "license": "MIT",
   "private": false,
@@ -23,6 +23,10 @@
     "email": "abdurahimnasirov123@gmail.com"
   },
   "github": "https://github.com/pxls00/vue-message-plugin-ts",
+  "repository": {
+    "type": "https",
+    "url": "git+https://github.com/pxls00/vue-message-plugin-ts"
+  },
   "main": "dist/index",
   "typings": "./dist/index",
   "scripts": {

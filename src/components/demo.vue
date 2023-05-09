@@ -7,6 +7,13 @@
     >
       Wait Action
     </button>
+    <button
+      type="button"
+      class="button button--wait-warning"
+      @click="stopWaitAction"
+    >
+      Stop Wait Action
+    </button>
     <button type="button" class="button button--success" @click="successAction">
       Success Action
     </button>
@@ -46,6 +53,9 @@ function waitAction () {
     class: 'wait__actions',
   })
 }
+function stopWaitAction () {
+  message.stopAction()
+}
 function successAction () {
   message.addNewMessage({
     title: {
@@ -72,7 +82,13 @@ function warningAction () {
 }
 function randomAction () {
   message.addNewMessage({
-    title: 'Custom message',
+    title: {
+      value: {
+        title: 'Scott',
+        body: 'I\'m Alfa in wolfpack',
+      },
+      class: ['custom-profile'],
+    },
     type: 'custom',
     img: '/vite.svg',
     key: 'account',
