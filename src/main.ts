@@ -16,7 +16,7 @@ app.use(pinia)
 // app.use(message)
 import message from '@/index'
 app.use(message, {
-  position: 'top-center'
+  position: 'top-right'
 })
 
 app.mount('#app')
