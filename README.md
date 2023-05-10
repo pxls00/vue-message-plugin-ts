@@ -6,7 +6,7 @@ A message plugin base on Vue with Typescript support
 
 ![Preview](https://github.com/pxls00/vue-message-plugin-ts/blob/master/preview.png)
 
-[Live Demo](https://github.com/pxls00/vue-message-plugin-ts)
+[Docs page | Live Demo](https://vue-message-plugin-205f7.web.app/)
 
 ## Installation
 
@@ -145,4 +145,4 @@ function stopAction () {
 
 ## License
 
-Licensed as [MIT](./LICENSE).
+Licensed as [MIT](https://github.com/pxls00/vue-message-plugin-ts/blob/master/LICENSE).
