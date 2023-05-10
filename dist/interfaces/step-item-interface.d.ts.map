@@ -1,1 +1,0 @@
-{"version":3,"file":"step-item-interface.d.ts","sourceRoot":"","sources":["../../src/interfaces/step-item-interface.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,SAAS,MAAM,6BAA6B,CAAA;AAExD,UAAU,QAAQ;IAChB,KAAK,EAAE,MAAM,CAAA;IACb,GAAG,EAAE,SAAS,CAAA;CACf;AAED,eAAe,QAAQ,CAAA"}

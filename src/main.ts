@@ -11,12 +11,5 @@ const app = createApp(App)
 const pinia = createPinia()
 app.use(pinia)
 
-// messages
-// import message from '@/plugins/message'
-// app.use(message)
-import message from '@/index'
-app.use(message, {
-  position: 'top-right',
-})
 
 app.mount('#app')
