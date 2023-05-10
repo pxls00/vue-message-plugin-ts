@@ -1,6 +1,6 @@
 {
   "name": "vue-message-plugin-ts",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "license": "MIT",
   "private": false,
@@ -27,6 +27,7 @@
     "type": "https",
     "url": "git+https://github.com/pxls00/vue-message-plugin-ts"
   },
+  "homepage": "https://vue-message-plugin-205f7.web.app",
   "main": "dist/index",
   "typings": "./dist/index",
   "scripts": {
