@@ -1,47 +1,26 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <v-message>
+    <template #message__title-custom="{ item: { item } }">
+      <div class="account">
+        <h3 class="account-title">
+          {{ item.title.value.title }}
+        </h3>
+        <p class="account-body">
+          {{ item.title.value.body }}
+        </p>
+      </div>
+    </template>
+  </v-message>
+  <StepsUsage />
+  <DemoComponent />
+  <FooterComponent />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup lang="ts">
+import DemoComponent from '@/components/demo.vue'
+import StepsUsage from '@/components/steps-usage.vue'
+import FooterComponent from '@/components/footer.vue'
+</script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
+<style lang="scss">
 </style>
