@@ -11,6 +11,10 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
+  'plugins': ['jest'],
+  'env': {
+    'jest': true
+  },
   rules: {
     // lines for vue eslint config
     'vue/max-attributes-per-line': [
