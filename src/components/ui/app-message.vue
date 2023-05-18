@@ -1,5 +1,6 @@
 <template>
   <li
+    data-testid="message__item"
     :class="[
       $style['message__item'], $style[`message__item--${props.message.type}`],
       getMessageItemClass(props.message.class || ''),
@@ -10,6 +11,7 @@
       <slot :name="`message__img-${props.message.type}`" :item="props.message">
         <div
           v-if="!props.message.img"
+          data-testid="message__img-block"
           :class="
             props.message.type === 'wait'
               ? $style['message__img-wait']
@@ -43,11 +45,12 @@
               ? getMessageItemClass(props.message.img.class)
               : '',
           ]"
+          data-testid="message__img-custom"
           alt="message avatar"
         >
       </slot>
     </div>
-    <div :class="$style['message__title']">
+    <div :class="$style['message__title']" data-testid="message__title-block">
       <slot
         :name="`message__title-${props.message.type}`"
         :item="{ ...props.message }"
@@ -59,6 +62,7 @@
               ? getMessageItemClass(props.message.title.class)
               : '',
           ]"
+          data-testid="message__title-content"
         >
           {{
             typeof props.message.title === 'object'
@@ -72,6 +76,7 @@
       v-if="props.message.type !== 'wait'"
       type="button"
       :class="$style['message__close']"
+      data-testid="message__close-button"
       @click="removeMessage(props.message as Message)"
     >
       <slot name="message__delete-btn">
@@ -114,6 +119,6 @@ function removeMessage (message: Message): void {
 }
 </script>
 
-<style lang='scss' module>
-@import './app-message';
+<style module>
+@import './app-message.scss';
 </style>
