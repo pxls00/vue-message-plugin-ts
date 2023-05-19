@@ -11,12 +11,12 @@
       <slot :name="`message__img-${props.message.type}`" :item="props.message">
         <div
           v-if="!props.message.img"
-          data-testid="message__img-block"
+          :data-testid="`message__img-block-${props.message.type}`"
           :class="
             props.message.type === 'wait'
               ? $style['message__img-wait']
               : props.message.type === 'success'
-                ? $style['message__img-success']
+                ? [$style['message__img-success'], 'test-success']
                 : props.message.type === 'error'
                   ? $style['message__img-error']
                   : props.message.type === 'warning'
@@ -62,6 +62,7 @@
               ? getMessageItemClass(props.message.title.class)
               : '',
           ]"
+          v-if="typeof props.message.title === 'object' && typeof props.message.title.value === 'string' || typeof props.message.title === 'string'"
           data-testid="message__title-content"
         >
           {{
