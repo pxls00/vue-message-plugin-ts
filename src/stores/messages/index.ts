@@ -23,7 +23,6 @@ export const useMessagesStore = defineStore('messages', () => {
     messages.value = messages.value.filter(
       (item: MessageItem): boolean => item.id !== message.id
       )
-    console.log('calling', messages.value)
   }
 
   function waitAction (message?: MessageItemWait) {
