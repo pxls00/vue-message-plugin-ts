@@ -60,7 +60,6 @@ function removeMessage (message: Message): void {
 }
 </script>
 
-
 <style lang="scss" module>
 .message__list {
   list-style: none;

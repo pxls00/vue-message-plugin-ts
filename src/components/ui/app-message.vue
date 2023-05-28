@@ -1,7 +1,9 @@
 <template>
   <li
+    data-testid="message__item"
     :class="[
-      $style['message__item'], $style[`message__item--${props.message.type}`],
+      $style['message__item'],
+      $style[`message__item--${props.message.type}`],
       getMessageItemClass(props.message.class || ''),
     ]"
     :data-message-type="props.message.type"
@@ -10,11 +12,12 @@
       <slot :name="`message__img-${props.message.type}`" :item="props.message">
         <div
           v-if="!props.message.img"
+          :data-testid="`message__img-block-${props.message.type}`"
           :class="
             props.message.type === 'wait'
               ? $style['message__img-wait']
               : props.message.type === 'success'
-                ? $style['message__img-success']
+                ? [$style['message__img-success'], 'test-success']
                 : props.message.type === 'error'
                   ? $style['message__img-error']
                   : props.message.type === 'warning'
@@ -43,22 +46,29 @@
               ? getMessageItemClass(props.message.img.class)
               : '',
           ]"
+          data-testid="message__img-custom"
           alt="message avatar"
         >
       </slot>
     </div>
-    <div :class="$style['message__title']">
+    <div :class="$style['message__title']" data-testid="message__title-block">
       <slot
         :name="`message__title-${props.message.type}`"
         :item="{ ...props.message }"
       >
         <p
+          v-if="
+            (typeof props.message.title === 'object' &&
+              typeof props.message.title.value === 'string') ||
+              typeof props.message.title === 'string'
+          "
           :class="[
             $style['message__title-content'],
             typeof props.message.title === 'object'
               ? getMessageItemClass(props.message.title.class)
               : '',
           ]"
+          data-testid="message__title-content"
         >
           {{
             typeof props.message.title === 'object'
@@ -72,6 +82,7 @@
       v-if="props.message.type !== 'wait'"
       type="button"
       :class="$style['message__close']"
+      data-testid="message__close-button"
       @click="removeMessage(props.message as Message)"
     >
       <slot name="message__delete-btn">
@@ -114,6 +125,6 @@ function removeMessage (message: Message): void {
 }
 </script>
 
-<style lang='scss' module>
-@import './app-message';
+<style module>
+@import './app-message.scss';
 </style>

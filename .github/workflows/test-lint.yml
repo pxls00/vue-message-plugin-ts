@@ -1,19 +1,14 @@
-name: Build
+name: Test & Check
 
 on:
-  workflow_run:
-    workflows: ["Test & Lint"]
-    branches: [master]
-    types:
-      - completed
+  pull_request:
+    branches: [ "master", "dev" ]
 
 jobs:
-  build:
-    name: 'Build' 
-    if: ${{github.event.push.commits > 1 && github.event.pull_request}}
-
+  test-lint:
+    name: 'Test & Check' 
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         node: [ 18.x ]
@@ -41,7 +36,12 @@ jobs:
             ${{ runner.os }}-
       - name: Install Dependencies
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile
-      
-      - name: Build project
-        run: yarn build
+        run: yarn install
+      - name: Tests [unit-tests]
+        run: yarn test:unit
+        
+      - name: Eslint error check
+        run: yarn lint:check
+
+      - name: Type error check
+        run: yarn type-check
