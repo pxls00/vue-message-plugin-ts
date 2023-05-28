@@ -1,12 +1,10 @@
-import {mount, type VueWrapper, type DOMWrapper} from '@vue/test-utils'
+import { mount, type VueWrapper, type DOMWrapper } from '@vue/test-utils'
 
 import AppMessage from '@/components/ui/app-message.vue'
 import type Message from '@/interfaces/messages/message-item'
 import type MessageWait from '@/interfaces/messages/message-item-wait'
 
-
 describe('App Message Component:', () => {
-  
   it('check success action with default message data', async () => {
     /* 
       Message Item with default data, message has type: success
@@ -14,25 +12,33 @@ describe('App Message Component:', () => {
     const messageItem: Message = {
       id: 1,
       title: 'Test Message',
-      type: 'success'
+      type: 'success',
     }
 
     /* 
       Mount Component and create VueWrapper
     */
-    const wrapper: VueWrapper<any> =  mount(AppMessage, {
+    const wrapper: VueWrapper<any> = mount(AppMessage as any, {
       props: {
-        message: messageItem
-      }
+        message: messageItem,
+      },
     })
-    
+
     /* 
       Elements initialization by data-testid
     */
-    const messageImgBlock: DOMWrapper<HTMLDivElement> = wrapper.find(`[data-testid="message__img-block-${messageItem.type}"]`)
-    const messageImgEl: DOMWrapper<HTMLImageElement> = wrapper.find('[data-testid="message__img-custom"]')
-    const messageTitleContent: DOMWrapper<HTMLParagraphElement> = wrapper.find('[data-testid="message__title-content"]')
-    const messageButton: DOMWrapper<HTMLButtonElement> = wrapper.find('[data-testid="message__close-button"]')
+    const messageImgBlock: DOMWrapper<HTMLDivElement> = wrapper.find(
+      `[data-testid="message__img-block-${messageItem.type}"]`
+    )
+    const messageImgEl: DOMWrapper<HTMLImageElement> = wrapper.find(
+      '[data-testid="message__img-custom"]'
+    )
+    const messageTitleContent: DOMWrapper<HTMLParagraphElement> = wrapper.find(
+      '[data-testid="message__title-content"]'
+    )
+    const messageButton: DOMWrapper<HTMLButtonElement> = wrapper.find(
+      '[data-testid="message__close-button"]'
+    )
 
     /*
       CHECK LIST
@@ -66,8 +72,8 @@ describe('App Message Component:', () => {
     const removeEvent = wrapper.emitted('remove')
 
     expect(removeEvent).toHaveLength(1)
-    
-    if(removeEvent && removeEvent.length) {
+
+    if (removeEvent && removeEvent.length) {
       expect(removeEvent[0][0]).toEqual(messageItem)
     }
   })
@@ -79,26 +85,30 @@ describe('App Message Component:', () => {
     const messageItem: MessageWait = {
       title: {
         value: 'Wait action...',
-        class: ['test_1', 'test_2']
+        class: ['test_1', 'test_2'],
       },
-      type: 'wait'
+      type: 'wait',
     }
 
     /* 
       Mount Component and create VueWrapper
     */
-    const wrapper: VueWrapper<any> = mount(AppMessage, {
+    const wrapper: VueWrapper<any> = mount(AppMessage as any, {
       props: {
-        message: messageItem
-      }
+        message: messageItem,
+      },
     })
 
     /* 
       Elements initialization by data-testid
     */
-    const messageImgBlock = wrapper.find(`[data-testid="message__img-block-${messageItem.type}"]`)
+    const messageImgBlock = wrapper.find(
+      `[data-testid="message__img-block-${messageItem.type}"]`
+    )
     const messageImgEl = wrapper.find('[data-testid="message__img-custom"]')
-    const messageTitleContent = wrapper.find('[data-testid="message__title-content"]')
+    const messageTitleContent = wrapper.find(
+      '[data-testid="message__title-content"]'
+    )
     const messageButton = wrapper.find('[data-testid="message__close-button"]')
 
     /*
@@ -131,23 +141,23 @@ describe('App Message Component:', () => {
       title: {
         value: {
           title: 'Scott',
-          body: 'True Alpha in beacon hills'
+          body: 'True Alpha in beacon hills',
         },
-        class: ['test_1', 'test_2']
+        class: ['test_1', 'test_2'],
       },
       img: {
         value: '/public/vite.svg',
-        class: ['test_1', 'test_2']
+        class: ['test_1', 'test_2'],
       },
-      type: 'custom'
+      type: 'custom',
     }
 
     /* 
       Mount Component and create VueWrapper
     */
-    const wrapper: VueWrapper<any> = mount(AppMessage, {
+    const wrapper: VueWrapper<any> = mount(AppMessage as any, {
       props: {
-        message: messageItem
+        message: messageItem,
       },
       slots: {
         'message__title-custom': `
@@ -155,17 +165,23 @@ describe('App Message Component:', () => {
             <div data-testid="message-title-slot-template-html">{{title}}</div>
           </template>
         `,
-      }
+      },
     })
 
     /* 
       Elements initialization by data-testid
     */
-    const messageImgBlock = wrapper.find(`[data-testid="message__img-block-${messageItem.type}"]`)
+    const messageImgBlock = wrapper.find(
+      `[data-testid="message__img-block-${messageItem.type}"]`
+    )
     const messageImgEl = wrapper.find('[data-testid="message__img-custom"]')
-    const messageTitleContent = wrapper.find('[data-testid="message__title-content"]')
+    const messageTitleContent = wrapper.find(
+      '[data-testid="message__title-content"]'
+    )
     const messageButton = wrapper.find('[data-testid="message__close-button"]')
-    const messageTitleSlotTemplateContent = wrapper.find('[data-testid="message-title-slot-template-html"]')
+    const messageTitleSlotTemplateContent = wrapper.find(
+      '[data-testid="message-title-slot-template-html"]'
+    )
 
     /*
       CHECK LIST
@@ -189,11 +205,13 @@ describe('App Message Component:', () => {
     */
     expect(messageImgBlock.exists()).not.toBe(true)
     expect(messageImgEl.exists()).toBe(true)
-    if(messageItem.img && typeof messageItem.img === 'object') {
+    if (messageItem.img && typeof messageItem.img === 'object') {
       expect(messageImgEl.classes()).toEqual(messageItem.img.class)
     }
     expect(messageTitleContent.exists()).not.toBe(true)
-    expect(messageTitleSlotTemplateContent.html()).toContain(messageItem.title.value.title)
+    expect(messageTitleSlotTemplateContent.html()).toContain(
+      messageItem.title.value.title
+    )
     expect(messageButton.exists()).toBe(true)
 
     await messageButton.trigger('click')
@@ -203,10 +221,9 @@ describe('App Message Component:', () => {
     const removeEvent = wrapper.emitted('remove')
 
     expect(removeEvent).toHaveLength(1)
-    
-    if(removeEvent && removeEvent.length) {
+
+    if (removeEvent && removeEvent.length) {
       expect(removeEvent[0][0]).toEqual(messageItem)
     }
   })
-
 })

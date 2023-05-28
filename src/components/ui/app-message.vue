@@ -2,7 +2,8 @@
   <li
     data-testid="message__item"
     :class="[
-      $style['message__item'], $style[`message__item--${props.message.type}`],
+      $style['message__item'],
+      $style[`message__item--${props.message.type}`],
       getMessageItemClass(props.message.class || ''),
     ]"
     :data-message-type="props.message.type"
@@ -56,13 +57,17 @@
         :item="{ ...props.message }"
       >
         <p
+          v-if="
+            (typeof props.message.title === 'object' &&
+              typeof props.message.title.value === 'string') ||
+              typeof props.message.title === 'string'
+          "
           :class="[
             $style['message__title-content'],
             typeof props.message.title === 'object'
               ? getMessageItemClass(props.message.title.class)
               : '',
           ]"
-          v-if="typeof props.message.title === 'object' && typeof props.message.title.value === 'string' || typeof props.message.title === 'string'"
           data-testid="message__title-content"
         >
           {{

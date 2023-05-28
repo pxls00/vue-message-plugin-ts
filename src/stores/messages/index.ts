@@ -22,7 +22,7 @@ export const useMessagesStore = defineStore('messages', () => {
   function removeMessage (message: MessageItem): void {
     messages.value = messages.value.filter(
       (item: MessageItem): boolean => item.id !== message.id
-      )
+    )
   }
 
   function waitAction (message?: MessageItemWait) {
