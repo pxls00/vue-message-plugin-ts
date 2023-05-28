@@ -18,7 +18,7 @@ describe('App Message Component:', () => {
     /* 
       Mount Component and create VueWrapper
     */
-    const wrapper: VueWrapper<any> = mount(AppMessage, {
+    const wrapper: VueWrapper<any> = mount(AppMessage as any, {
       props: {
         message: messageItem,
       },
@@ -93,7 +93,7 @@ describe('App Message Component:', () => {
     /* 
       Mount Component and create VueWrapper
     */
-    const wrapper: VueWrapper<any> = mount(AppMessage, {
+    const wrapper: VueWrapper<any> = mount(AppMessage as any, {
       props: {
         message: messageItem,
       },
@@ -155,7 +155,7 @@ describe('App Message Component:', () => {
     /* 
       Mount Component and create VueWrapper
     */
-    const wrapper: VueWrapper<any> = mount(AppMessage, {
+    const wrapper: VueWrapper<any> = mount(AppMessage as any, {
       props: {
         message: messageItem,
       },
