@@ -1,0 +1,24 @@
+name: Test & Check
+
+on:
+  pull_request:
+    branches: [ "master", "dev" ]
+
+jobs:
+  test-lint:
+    name: 'Test & Check' 
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [ 18.x ]
+
+    steps:
+      - name: Tests [unit-tests]
+        run: yarn test:unit
+        
+      - name: Eslint error check
+        run: yarn lint:check
+
+      - name: Type error check
+        run: yarn type-check
