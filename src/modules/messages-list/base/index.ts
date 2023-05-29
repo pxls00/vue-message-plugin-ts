@@ -1,18 +1,21 @@
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed } from 'vue'
 import { useMessageStore } from '@/modules/messages-list/store/index'
-import { storeToRefs } from 'pinia';
+import { storeToRefs } from 'pinia'
 import MessageItem from '@/modules/messages-list/components/messages-item/index.vue'
 import { MESSAGE_WAIT_ACTION_CREDENTIALS } from '@/modules/messages-list/constants/default-data'
-import type {IMessageItem, IMessageWait} from '@/modules/messages-list/components/messages-item/index.types'
+import type {
+  IMessageItem,
+  IMessageWait,
+} from '@/modules/messages-list/components/messages-item/index.types'
 
 export default defineComponent({
   name: 'MessageList',
 
   components: {
-    MessageItem
+    MessageItem,
   },
-  
-  setup () {
+
+  setup() {
     const store = useMessageStore()
 
     const { messages, wait, position, isWait } = storeToRefs(store)
@@ -24,16 +27,16 @@ export default defineComponent({
       return MESSAGE_WAIT_ACTION_CREDENTIALS
     })
 
-    function removeMessage (message: IMessageItem): void {
+    function removeMessage(message: IMessageItem): void {
       store.removeMessage(message)
     }
-    
+
     return {
       messages,
       messageWait,
       removeMessage,
       position,
-      isWait
+      isWait,
     }
-  }
+  },
 })

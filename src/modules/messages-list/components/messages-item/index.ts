@@ -26,19 +26,18 @@ export default defineComponent({
     }
 
     function getFieldClassList(messageField: TMessageField<undefined>) {
-      if(messageField && typeof messageField === 'object') {
+      if (messageField && typeof messageField === 'object') {
         return getMessageClass(messageField.class)
       }
     }
 
     function getFieldValue(messageField: TMessageField<undefined>) {
-      if(messageField && typeof messageField === 'object') {
+      if (messageField && typeof messageField === 'object') {
         return messageField.value
-      }else {
+      } else {
         return messageField
       }
     }
-
 
     const getMessageImgBlockContent = computed(() => {
       if (props.message.type === 'success') {
@@ -50,15 +49,18 @@ export default defineComponent({
       }
     })
 
-    const isShowMessageContent = computed(() =>  (typeof props.message.body === 'object' &&
-        typeof props.message.body.value === 'string') ||
-        typeof props.message.body === 'string')
+    const isShowMessageContent = computed(
+      () =>
+        (typeof props.message.body === 'object' &&
+          typeof props.message.body.value === 'string') ||
+        typeof props.message.body === 'string'
+    )
 
     return {
       removeMessage,
       getMessageClass,
       getFieldValue,
-      getFieldClassList, 
+      getFieldClassList,
       getMessageImgBlockContent,
       isShowMessageContent,
     }

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <li
     data-testid="message__item"
     :class="[
@@ -127,4 +127,4 @@ function removeMessage (message: Message): void {
 
 <style module>
 @import './app-message.scss';
-</style>
+</style> -->

@@ -1,11 +1,13 @@
 <template>
   <MessagesListModule.MessagesList />
-  <button @click="newMessage">Add New message</button>
+  <button @click="newMessage">
+    Add New message
+  </button>
 </template>
 
 <script setup lang="ts">
-import MessagesListModule from './modules/messages-list';
-import {useMessageStore} from '@/modules/messages-list/store/index'
+import MessagesListModule from './modules/messages-list'
+import { useMessageStore } from '@/modules/messages-list/store/index'
 
 const store = useMessageStore()
 
@@ -15,7 +17,7 @@ function newMessage() {
     id: 123,
     class: ['asdasd'],
     type: 'success',
-    duration: 2000
+    duration: 2000,
   })
 }
 </script>

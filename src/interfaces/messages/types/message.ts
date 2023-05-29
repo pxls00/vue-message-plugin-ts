@@ -1,3 +1,3 @@
-type MessageItemType = 'error' | 'success' | 'warning' | 'custom' | 'wait'
+// type MessageItemType = 'error' | 'success' | 'warning' | 'custom' | 'wait'
 
-export default MessageItemType
+// export default MessageItemType

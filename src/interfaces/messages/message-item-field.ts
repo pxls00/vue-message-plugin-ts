@@ -1,8 +1,8 @@
-import type MessageItemCLass from '@/interfaces/messages/types/message-class'
+// import type MessageItemCLass from '@/interfaces/messages/types/message-class'
 
-interface MessageItemField {
-  value: string | any
-  class: MessageItemCLass
-}
+// interface MessageItemField {
+//   value: string | any
+//   class: MessageItemCLass
+// }
 
-export default MessageItemField
+// export default MessageItemField

@@ -1,3 +1,3 @@
-type Class = string | string[]
+// type Class = string | string[]
 
-export default Class
+// export default Class

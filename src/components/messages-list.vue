@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <TransitionGroup
     name="list"
     tag="ul"
@@ -55,7 +55,7 @@ const messageWait = computed<MessageWait>(() => {
   return MESSAGE_WAIT_ACTION_CREDENTIALS
 })
 
-function removeMessage (message: Message): void {
+function removeMessage(message: Message): void {
   store.removeMessage(message)
 }
 </script>
@@ -75,4 +75,4 @@ function removeMessage (message: Message): void {
 
 <style lang="scss">
 @import './messages-list.scss';
-</style>
+</style> -->
