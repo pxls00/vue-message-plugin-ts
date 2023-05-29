@@ -1,3 +1,3 @@
-type Id = number | string
+// type Id = number | string
 
-export default Id
+// export default Id

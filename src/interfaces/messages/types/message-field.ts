@@ -1,5 +1,5 @@
-import type IMessageItemField from '@/interfaces/messages/message-item-field'
+// import type IMessageItemField from '@/interfaces/messages/message-item-field'
 
-type MessageField = string | IMessageItemField
+// type MessageField = string | IMessageItemField
 
-export default MessageField
+// export default MessageField

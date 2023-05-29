@@ -4,11 +4,11 @@
     tag="ul"
     :class="['message__list', `message__list--${position}`]"
   >
-    <MessageItem 
-      v-if="isWait" 
+    <MessageItem
+      v-if="isWait"
       :message="messageWait"
     >
-      <template 
+      <template
         v-for="(_, slot) in $slots"
         #[slot]
       >
@@ -21,11 +21,11 @@
       :message="message"
       @remove="removeMessage"
     >
-      <template 
+      <template
         v-for="(_, slot) in $slots"
         #[slot]="data"
       >
-        <slot 
+        <slot
           :name="slot"
           :item="{ ...data }"
         ></slot>
@@ -34,6 +34,6 @@
   </TransitionGroup>
 </template>
 
-<script lang='ts' src='./index'></script>
+<script lang="ts" src="./index"></script>
 
-<style scoped lang='scss' src='./index.scss'></style>
+<style scoped lang="scss" src="./index.scss"></style>

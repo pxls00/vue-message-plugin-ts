@@ -1,7 +1,9 @@
 <template>
   <li
     data-testid="message__item"
-    :class="`message__item message__item--${message.type} ${getMessageClass(message.class)}`"
+    :class="`message__item message__item--${message.type} ${getMessageClass(
+      message.class
+    )}`"
     :data-message-type="message.type"
   >
     <div class="message__img">
@@ -14,9 +16,7 @@
           :data-testid="`message__img-block-${message.type}`"
           :class="`message__img-${message.type}`"
         >
-          {{
-            getMessageImgBlockContent
-          }}
+          {{ getMessageImgBlockContent }}
         </div>
         <img
           v-else
@@ -40,9 +40,7 @@
           :class="`message__title-content ${getFieldClassList(message.body)}`"
           data-testid="message__title-content"
         >
-          {{
-            getFieldValue(message.body)
-          }}
+          {{ getFieldValue(message.body) }}
         </p>
       </slot>
     </div>
@@ -60,5 +58,5 @@
   </li>
 </template>
 
-<script lang='ts' src='./index.ts'></script>
-<style scoped lang='scss' src='./index.scss'></style>
+<script lang="ts" src="./index.ts"></script>
+<style scoped lang="scss" src="./index.scss"></style>
