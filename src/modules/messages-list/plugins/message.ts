@@ -5,10 +5,10 @@ import MessagesList from '../base/index.vue'
 
 import type {
   IMessageItem,
-  IMessageWait,
   IMessageBase,
   IMessagesOption,
   IMessagesPlugin,
+  TMessageId,
 } from '../index.types'
 
 export default {
@@ -25,23 +25,23 @@ export default {
       store.newMessage(createdMessage)
     }
 
-    function removeMessage(message: IMessageItem): void {
-      store.removeMessage(message)
+    function removeMessage(id: TMessageId): void {
+      store.removeMessage(id)
     }
 
-    function waitAction(message?: IMessageWait): void {
-      store.waitAction(message)
+    function startWait(message?: IMessageItem): void {
+      store.startWait(message)
     }
 
-    function stopAction(): void {
-      store.unwaitAction()
+    function stopWait(id?: TMessageId): void {
+      store.stopWait(id)
     }
 
     const message: IMessagesPlugin = {
       addNewMessage,
       removeMessage,
-      waitAction,
-      stopAction,
+      startWait,
+      stopWait,
     }
 
     app.provide('message', message)

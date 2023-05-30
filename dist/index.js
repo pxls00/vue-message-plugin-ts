@@ -1,9 +1,9 @@
-import { effectScope as De, ref as j, markRaw as P, toRaw as Q, isRef as U, isReactive as te, toRef as q, getCurrentInstance as st, inject as nt, watch as ke, unref as m, reactive as ot, nextTick as Ee, computed as me, getCurrentScope as rt, onScopeDispose as it, toRefs as Se, defineComponent as se, useCssModule as je, openBlock as T, createElementBlock as H, normalizeClass as V, createElementVNode as re, renderSlot as B, toDisplayString as Oe, createTextVNode as at, createCommentVNode as Le, createBlock as ie, TransitionGroup as ct, withCtx as ae, createSlots as Ne, renderList as ce, Fragment as lt } from "vue";
-var Ce = !1;
-function Y(e, n, t) {
-  return Array.isArray(e) ? (e.length = Math.max(e.length, n), e.splice(n, 1, t), t) : (e[n] = t, t);
+import { effectScope as Te, ref as G, markRaw as N, toRaw as W, isRef as R, isReactive as te, toRef as z, getCurrentInstance as Ze, inject as Ke, watch as Ve, unref as et, reactive as tt, nextTick as me, computed as K, getCurrentScope as st, onScopeDispose as nt, toRefs as _e, defineComponent as ke, openBlock as P, createElementBlock as L, normalizeClass as V, createElementVNode as he, renderSlot as Y, toDisplayString as ot, createCommentVNode as ye, createTextVNode as rt, resolveComponent as it, createBlock as ve, TransitionGroup as at, withCtx as be, Fragment as ct, renderList as Ee, createSlots as lt } from "vue";
+var Ae = !1;
+function Q(e, n, s) {
+  return Array.isArray(e) ? (e.length = Math.max(e.length, n), e.splice(n, 1, s), s) : (e[n] = s, s);
 }
-function le(e, n) {
+function oe(e, n) {
   if (Array.isArray(e)) {
     e.splice(n, 1);
     return;
@@ -11,33 +11,33 @@ function le(e, n) {
   delete e[n];
 }
 function ut() {
-  return Me().__VUE_DEVTOOLS_GLOBAL_HOOK__;
+  return De().__VUE_DEVTOOLS_GLOBAL_HOOK__;
 }
-function Me() {
+function De() {
   return typeof navigator < "u" && typeof window < "u" ? window : typeof global < "u" ? global : {};
 }
-const ft = typeof Proxy == "function", dt = "devtools-plugin:setup", _t = "plugin:settings:set";
-let C, fe;
-function gt() {
+const ft = typeof Proxy == "function", dt = "devtools-plugin:setup", gt = "plugin:settings:set";
+let j, re;
+function pt() {
   var e;
-  return C !== void 0 || (typeof window < "u" && window.performance ? (C = !0, fe = window.performance) : typeof global < "u" && (!((e = global.perf_hooks) === null || e === void 0) && e.performance) ? (C = !0, fe = global.perf_hooks.performance) : C = !1), C;
+  return j !== void 0 || (typeof window < "u" && window.performance ? (j = !0, re = window.performance) : typeof global < "u" && (!((e = global.perf_hooks) === null || e === void 0) && e.performance) ? (j = !0, re = global.perf_hooks.performance) : j = !1), j;
 }
 function mt() {
-  return gt() ? fe.now() : Date.now();
+  return pt() ? re.now() : Date.now();
 }
-class pt {
-  constructor(n, t) {
-    this.target = null, this.targetQueue = [], this.onQueue = [], this.plugin = n, this.hook = t;
-    const s = {};
+class _t {
+  constructor(n, s) {
+    this.target = null, this.targetQueue = [], this.onQueue = [], this.plugin = n, this.hook = s;
+    const t = {};
     if (n.settings)
-      for (const r in n.settings) {
-        const i = n.settings[r];
-        s[r] = i.defaultValue;
+      for (const o in n.settings) {
+        const i = n.settings[o];
+        t[o] = i.defaultValue;
       }
-    const o = `__vue-devtools-plugin-settings__${n.id}`;
-    let a = Object.assign({}, s);
+    const r = `__vue-devtools-plugin-settings__${n.id}`;
+    let a = Object.assign({}, t);
     try {
-      const r = localStorage.getItem(o), i = JSON.parse(r);
+      const o = localStorage.getItem(r), i = JSON.parse(o);
       Object.assign(a, i);
     } catch {
     }
@@ -45,35 +45,35 @@ class pt {
       getSettings() {
         return a;
       },
-      setSettings(r) {
+      setSettings(o) {
         try {
-          localStorage.setItem(o, JSON.stringify(r));
+          localStorage.setItem(r, JSON.stringify(o));
         } catch {
         }
-        a = r;
+        a = o;
       },
       now() {
         return mt();
       }
-    }, t && t.on(_t, (r, i) => {
-      r === this.plugin.id && this.fallbacks.setSettings(i);
+    }, s && s.on(gt, (o, i) => {
+      o === this.plugin.id && this.fallbacks.setSettings(i);
     }), this.proxiedOn = new Proxy({}, {
-      get: (r, i) => this.target ? this.target.on[i] : (...c) => {
+      get: (o, i) => this.target ? this.target.on[i] : (...l) => {
         this.onQueue.push({
           method: i,
-          args: c
+          args: l
         });
       }
     }), this.proxiedTarget = new Proxy({}, {
-      get: (r, i) => this.target ? this.target[i] : i === "on" ? this.proxiedOn : Object.keys(this.fallbacks).includes(i) ? (...c) => (this.targetQueue.push({
+      get: (o, i) => this.target ? this.target[i] : i === "on" ? this.proxiedOn : Object.keys(this.fallbacks).includes(i) ? (...l) => (this.targetQueue.push({
         method: i,
-        args: c,
+        args: l,
         resolve: () => {
         }
-      }), this.fallbacks[i](...c)) : (...c) => new Promise((f) => {
+      }), this.fallbacks[i](...l)) : (...l) => new Promise((f) => {
         this.targetQueue.push({
           method: i,
-          args: c,
+          args: l,
           resolve: f
         });
       })
@@ -81,23 +81,23 @@ class pt {
   }
   async setRealTarget(n) {
     this.target = n;
-    for (const t of this.onQueue)
-      this.target.on[t.method](...t.args);
-    for (const t of this.targetQueue)
-      t.resolve(await this.target[t.method](...t.args));
+    for (const s of this.onQueue)
+      this.target.on[s.method](...s.args);
+    for (const s of this.targetQueue)
+      s.resolve(await this.target[s.method](...s.args));
   }
 }
-function xe(e, n) {
-  const t = e, s = Me(), o = ut(), a = ft && t.enableEarlyProxy;
-  if (o && (s.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !a))
-    o.emit(dt, e, n);
+function je(e, n) {
+  const s = e, t = De(), r = ut(), a = ft && s.enableEarlyProxy;
+  if (r && (t.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !a))
+    r.emit(dt, e, n);
   else {
-    const r = a ? new pt(t, o) : null;
-    (s.__VUE_DEVTOOLS_PLUGINS__ = s.__VUE_DEVTOOLS_PLUGINS__ || []).push({
-      pluginDescriptor: t,
+    const o = a ? new _t(s, r) : null;
+    (t.__VUE_DEVTOOLS_PLUGINS__ = t.__VUE_DEVTOOLS_PLUGINS__ || []).push({
+      pluginDescriptor: s,
       setupFn: n,
-      proxy: r
-    }), r && n(r.proxiedTarget);
+      proxy: o
+    }), o && n(o.proxiedTarget);
   }
 }
 /*!
@@ -105,31 +105,31 @@ function xe(e, n) {
   * (c) 2023 Eduardo San Martin Morote
   * @license MIT
   */
-let G;
-const W = (e) => G = e, Ue = process.env.NODE_ENV !== "production" ? Symbol("pinia") : (
+let F;
+const B = (e) => F = e, Ce = process.env.NODE_ENV !== "production" ? Symbol("pinia") : (
   /* istanbul ignore next */
   Symbol()
 );
-function L(e) {
+function A(e) {
   return e && typeof e == "object" && Object.prototype.toString.call(e) === "[object Object]" && typeof e.toJSON != "function";
 }
-var N;
+var O;
 (function(e) {
   e.direct = "direct", e.patchObject = "patch object", e.patchFunction = "patch function";
-})(N || (N = {}));
-const ne = typeof window < "u", J = (process.env.NODE_ENV !== "production" || !1) && process.env.NODE_ENV !== "test" && ne, Ie = /* @__PURE__ */ (() => typeof window == "object" && window.window === window ? window : typeof self == "object" && self.self === self ? self : typeof global == "object" && global.global === global ? global : typeof globalThis == "object" ? globalThis : { HTMLElement: null })();
+})(O || (O = {}));
+const se = typeof window < "u", H = (process.env.NODE_ENV !== "production" || !1) && process.env.NODE_ENV !== "test" && se, Se = /* @__PURE__ */ (() => typeof window == "object" && window.window === window ? window : typeof self == "object" && self.self === self ? self : typeof global == "object" && global.global === global ? global : typeof globalThis == "object" ? globalThis : { HTMLElement: null })();
 function ht(e, { autoBom: n = !1 } = {}) {
   return n && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(e.type) ? new Blob([String.fromCharCode(65279), e], { type: e.type }) : e;
 }
-function pe(e, n, t) {
-  const s = new XMLHttpRequest();
-  s.open("GET", e), s.responseType = "blob", s.onload = function() {
-    He(s.response, n, t);
-  }, s.onerror = function() {
+function le(e, n, s) {
+  const t = new XMLHttpRequest();
+  t.open("GET", e), t.responseType = "blob", t.onload = function() {
+    Re(t.response, n, s);
+  }, t.onerror = function() {
     console.error("could not download file");
-  }, s.send();
+  }, t.send();
 }
-function Re(e) {
+function Le(e) {
   const n = new XMLHttpRequest();
   n.open("HEAD", e, !1);
   try {
@@ -138,231 +138,231 @@ function Re(e) {
   }
   return n.status >= 200 && n.status <= 299;
 }
-function X(e) {
+function q(e) {
   try {
     e.dispatchEvent(new MouseEvent("click"));
   } catch {
-    const t = document.createEvent("MouseEvents");
-    t.initMouseEvent("click", !0, !0, window, 0, 0, 0, 80, 20, !1, !1, !1, !1, 0, null), e.dispatchEvent(t);
+    const s = document.createEvent("MouseEvents");
+    s.initMouseEvent("click", !0, !0, window, 0, 0, 0, 80, 20, !1, !1, !1, !1, 0, null), e.dispatchEvent(s);
   }
 }
-const Z = typeof navigator == "object" ? navigator : { userAgent: "" }, Fe = /* @__PURE__ */ (() => /Macintosh/.test(Z.userAgent) && /AppleWebKit/.test(Z.userAgent) && !/Safari/.test(Z.userAgent))(), He = ne ? (
+const X = typeof navigator == "object" ? navigator : { userAgent: "" }, Me = /* @__PURE__ */ (() => /Macintosh/.test(X.userAgent) && /AppleWebKit/.test(X.userAgent) && !/Safari/.test(X.userAgent))(), Re = se ? (
   // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView or mini program
-  typeof HTMLAnchorElement < "u" && "download" in HTMLAnchorElement.prototype && !Fe ? yt : (
+  typeof HTMLAnchorElement < "u" && "download" in HTMLAnchorElement.prototype && !Me ? yt : (
     // Use msSaveOrOpenBlob as a second approach
-    "msSaveOrOpenBlob" in Z ? vt : (
+    "msSaveOrOpenBlob" in X ? vt : (
       // Fallback to using FileReader and a popup
-      wt
+      bt
     )
   )
 ) : () => {
 };
-function yt(e, n = "download", t) {
-  const s = document.createElement("a");
-  s.download = n, s.rel = "noopener", typeof e == "string" ? (s.href = e, s.origin !== location.origin ? Re(s.href) ? pe(e, n, t) : (s.target = "_blank", X(s)) : X(s)) : (s.href = URL.createObjectURL(e), setTimeout(function() {
-    URL.revokeObjectURL(s.href);
+function yt(e, n = "download", s) {
+  const t = document.createElement("a");
+  t.download = n, t.rel = "noopener", typeof e == "string" ? (t.href = e, t.origin !== location.origin ? Le(t.href) ? le(e, n, s) : (t.target = "_blank", q(t)) : q(t)) : (t.href = URL.createObjectURL(e), setTimeout(function() {
+    URL.revokeObjectURL(t.href);
   }, 4e4), setTimeout(function() {
-    X(s);
+    q(t);
   }, 0));
 }
-function vt(e, n = "download", t) {
+function vt(e, n = "download", s) {
   if (typeof e == "string")
-    if (Re(e))
-      pe(e, n, t);
+    if (Le(e))
+      le(e, n, s);
     else {
-      const s = document.createElement("a");
-      s.href = e, s.target = "_blank", setTimeout(function() {
-        X(s);
+      const t = document.createElement("a");
+      t.href = e, t.target = "_blank", setTimeout(function() {
+        q(t);
       });
     }
   else
-    navigator.msSaveOrOpenBlob(ht(e, t), n);
+    navigator.msSaveOrOpenBlob(ht(e, s), n);
 }
-function wt(e, n, t, s) {
-  if (s = s || open("", "_blank"), s && (s.document.title = s.document.body.innerText = "downloading..."), typeof e == "string")
-    return pe(e, n, t);
-  const o = e.type === "application/octet-stream", a = /constructor/i.test(String(Ie.HTMLElement)) || "safari" in Ie, r = /CriOS\/[\d]+/.test(navigator.userAgent);
-  if ((r || o && a || Fe) && typeof FileReader < "u") {
+function bt(e, n, s, t) {
+  if (t = t || open("", "_blank"), t && (t.document.title = t.document.body.innerText = "downloading..."), typeof e == "string")
+    return le(e, n, s);
+  const r = e.type === "application/octet-stream", a = /constructor/i.test(String(Se.HTMLElement)) || "safari" in Se, o = /CriOS\/[\d]+/.test(navigator.userAgent);
+  if ((o || r && a || Me) && typeof FileReader < "u") {
     const i = new FileReader();
     i.onloadend = function() {
-      let c = i.result;
-      if (typeof c != "string")
-        throw s = null, new Error("Wrong reader.result type");
-      c = r ? c : c.replace(/^data:[^;]*;/, "data:attachment/file;"), s ? s.location.href = c : location.assign(c), s = null;
+      let l = i.result;
+      if (typeof l != "string")
+        throw t = null, new Error("Wrong reader.result type");
+      l = o ? l : l.replace(/^data:[^;]*;/, "data:attachment/file;"), t ? t.location.href = l : location.assign(l), t = null;
     }, i.readAsDataURL(e);
   } else {
     const i = URL.createObjectURL(e);
-    s ? s.location.assign(i) : location.href = i, s = null, setTimeout(function() {
+    t ? t.location.assign(i) : location.href = i, t = null, setTimeout(function() {
       URL.revokeObjectURL(i);
     }, 4e4);
   }
 }
-function h(e, n) {
-  const t = "🍍 " + e;
-  typeof __VUE_DEVTOOLS_TOAST__ == "function" ? __VUE_DEVTOOLS_TOAST__(t, n) : n === "error" ? console.error(t) : n === "warn" ? console.warn(t) : console.log(t);
+function _(e, n) {
+  const s = "🍍 " + e;
+  typeof __VUE_DEVTOOLS_TOAST__ == "function" ? __VUE_DEVTOOLS_TOAST__(s, n) : n === "error" ? console.error(s) : n === "warn" ? console.warn(s) : console.log(s);
 }
-function he(e) {
+function ue(e) {
   return "_a" in e && "install" in e;
 }
-function Ge() {
+function Ue() {
   if (!("clipboard" in navigator))
-    return h("Your browser doesn't support the Clipboard API", "error"), !0;
+    return _("Your browser doesn't support the Clipboard API", "error"), !0;
 }
-function Be(e) {
-  return e instanceof Error && e.message.toLowerCase().includes("document is not focused") ? (h('You need to activate the "Emulate a focused page" setting in the "Rendering" panel of devtools.', "warn"), !0) : !1;
-}
-async function bt(e) {
-  if (!Ge())
-    try {
-      await navigator.clipboard.writeText(JSON.stringify(e.state.value)), h("Global state copied to clipboard.");
-    } catch (n) {
-      if (Be(n))
-        return;
-      h("Failed to serialize the state. Check the console for more details.", "error"), console.error(n);
-    }
+function xe(e) {
+  return e instanceof Error && e.message.toLowerCase().includes("document is not focused") ? (_('You need to activate the "Emulate a focused page" setting in the "Rendering" panel of devtools.', "warn"), !0) : !1;
 }
 async function Et(e) {
-  if (!Ge())
+  if (!Ue())
     try {
-      e.state.value = JSON.parse(await navigator.clipboard.readText()), h("Global state pasted from clipboard.");
+      await navigator.clipboard.writeText(JSON.stringify(e.state.value)), _("Global state copied to clipboard.");
     } catch (n) {
-      if (Be(n))
+      if (xe(n))
         return;
-      h("Failed to deserialize the state from clipboard. Check the console for more details.", "error"), console.error(n);
+      _("Failed to serialize the state. Check the console for more details.", "error"), console.error(n);
     }
 }
 async function St(e) {
+  if (!Ue())
+    try {
+      e.state.value = JSON.parse(await navigator.clipboard.readText()), _("Global state pasted from clipboard.");
+    } catch (n) {
+      if (xe(n))
+        return;
+      _("Failed to deserialize the state from clipboard. Check the console for more details.", "error"), console.error(n);
+    }
+}
+async function wt(e) {
   try {
-    He(new Blob([JSON.stringify(e.state.value)], {
+    Re(new Blob([JSON.stringify(e.state.value)], {
       type: "text/plain;charset=utf-8"
     }), "pinia-state.json");
   } catch (n) {
-    h("Failed to export the state as JSON. Check the console for more details.", "error"), console.error(n);
+    _("Failed to export the state as JSON. Check the console for more details.", "error"), console.error(n);
   }
 }
 let I;
 function Ot() {
   I || (I = document.createElement("input"), I.type = "file", I.accept = ".json");
   function e() {
-    return new Promise((n, t) => {
+    return new Promise((n, s) => {
       I.onchange = async () => {
-        const s = I.files;
-        if (!s)
+        const t = I.files;
+        if (!t)
           return n(null);
-        const o = s.item(0);
-        return n(o ? { text: await o.text(), file: o } : null);
-      }, I.oncancel = () => n(null), I.onerror = t, I.click();
+        const r = t.item(0);
+        return n(r ? { text: await r.text(), file: r } : null);
+      }, I.oncancel = () => n(null), I.onerror = s, I.click();
     });
   }
   return e;
 }
-async function Nt(e) {
+async function It(e) {
   try {
-    const t = await (await Ot())();
-    if (!t)
+    const s = await (await Ot())();
+    if (!s)
       return;
-    const { text: s, file: o } = t;
-    e.state.value = JSON.parse(s), h(`Global state imported from "${o.name}".`);
+    const { text: t, file: r } = s;
+    e.state.value = JSON.parse(t), _(`Global state imported from "${r.name}".`);
   } catch (n) {
-    h("Failed to export the state as JSON. Check the console for more details.", "error"), console.error(n);
+    _("Failed to export the state as JSON. Check the console for more details.", "error"), console.error(n);
   }
 }
-function O(e) {
+function S(e) {
   return {
     _custom: {
       display: e
     }
   };
 }
-const Je = "🍍 Pinia (root)", de = "_root";
-function It(e) {
-  return he(e) ? {
-    id: de,
-    label: Je
+const Fe = "🍍 Pinia (root)", ie = "_root";
+function Nt(e) {
+  return ue(e) ? {
+    id: ie,
+    label: Fe
   } : {
     id: e.$id,
     label: e.$id
   };
 }
-function Pt(e) {
-  if (he(e)) {
-    const t = Array.from(e._s.keys()), s = e._s;
+function $t(e) {
+  if (ue(e)) {
+    const s = Array.from(e._s.keys()), t = e._s;
     return {
-      state: t.map((a) => ({
+      state: s.map((a) => ({
         editable: !0,
         key: a,
         value: e.state.value[a]
       })),
-      getters: t.filter((a) => s.get(a)._getters).map((a) => {
-        const r = s.get(a);
+      getters: s.filter((a) => t.get(a)._getters).map((a) => {
+        const o = t.get(a);
         return {
           editable: !1,
           key: a,
-          value: r._getters.reduce((i, c) => (i[c] = r[c], i), {})
+          value: o._getters.reduce((i, l) => (i[l] = o[l], i), {})
         };
       })
     };
   }
   const n = {
-    state: Object.keys(e.$state).map((t) => ({
+    state: Object.keys(e.$state).map((s) => ({
       editable: !0,
-      key: t,
-      value: e.$state[t]
+      key: s,
+      value: e.$state[s]
     }))
   };
-  return e._getters && e._getters.length && (n.getters = e._getters.map((t) => ({
+  return e._getters && e._getters.length && (n.getters = e._getters.map((s) => ({
     editable: !1,
-    key: t,
-    value: e[t]
-  }))), e._customProperties.size && (n.customProperties = Array.from(e._customProperties).map((t) => ({
+    key: s,
+    value: e[s]
+  }))), e._customProperties.size && (n.customProperties = Array.from(e._customProperties).map((s) => ({
     editable: !0,
-    key: t,
-    value: e[t]
+    key: s,
+    value: e[s]
   }))), n;
 }
-function $t(e) {
-  return e ? Array.isArray(e) ? e.reduce((n, t) => (n.keys.push(t.key), n.operations.push(t.type), n.oldValue[t.key] = t.oldValue, n.newValue[t.key] = t.newValue, n), {
+function Pt(e) {
+  return e ? Array.isArray(e) ? e.reduce((n, s) => (n.keys.push(s.key), n.operations.push(s.type), n.oldValue[s.key] = s.oldValue, n.newValue[s.key] = s.newValue, n), {
     oldValue: {},
     keys: [],
     operations: [],
     newValue: {}
   }) : {
-    operation: O(e.type),
-    key: O(e.key),
+    operation: S(e.type),
+    key: S(e.key),
     oldValue: e.oldValue,
     newValue: e.newValue
   } : {};
 }
-function At(e) {
+function Tt(e) {
   switch (e) {
-    case N.direct:
+    case O.direct:
       return "mutation";
-    case N.patchFunction:
+    case O.patchFunction:
       return "$patch";
-    case N.patchObject:
+    case O.patchObject:
       return "$patch";
     default:
       return "unknown";
   }
 }
-let x = !0;
-const K = [], D = "pinia:mutations", v = "pinia", { assign: Tt } = Object, ee = (e) => "🍍 " + e;
-function Vt(e, n) {
-  xe({
+let M = !0;
+const Z = [], T = "pinia:mutations", h = "pinia", { assign: Vt } = Object, ee = (e) => "🍍 " + e;
+function kt(e, n) {
+  je({
     id: "dev.esm.pinia",
     label: "Pinia 🍍",
     logo: "https://pinia.vuejs.org/logo.svg",
     packageName: "pinia",
     homepage: "https://pinia.vuejs.org",
-    componentStateTypes: K,
+    componentStateTypes: Z,
     app: e
-  }, (t) => {
-    typeof t.now != "function" && h("You seem to be using an outdated version of Vue Devtools. Are you still using the Beta release instead of the stable one? You can find the links at https://devtools.vuejs.org/guide/installation.html."), t.addTimelineLayer({
-      id: D,
+  }, (s) => {
+    typeof s.now != "function" && _("You seem to be using an outdated version of Vue Devtools. Are you still using the Beta release instead of the stable one? You can find the links at https://devtools.vuejs.org/guide/installation.html."), s.addTimelineLayer({
+      id: T,
       label: "Pinia 🍍",
       color: 15064968
-    }), t.addInspector({
-      id: v,
+    }), s.addInspector({
+      id: h,
       label: "Pinia 🍍",
       icon: "storage",
       treeFilterPlaceholder: "Search stores",
@@ -370,28 +370,28 @@ function Vt(e, n) {
         {
           icon: "content_copy",
           action: () => {
-            bt(n);
+            Et(n);
           },
           tooltip: "Serialize and copy the state"
         },
         {
           icon: "content_paste",
           action: async () => {
-            await Et(n), t.sendInspectorTree(v), t.sendInspectorState(v);
+            await St(n), s.sendInspectorTree(h), s.sendInspectorState(h);
           },
           tooltip: "Replace the state with the content of your clipboard"
         },
         {
           icon: "save",
           action: () => {
-            St(n);
+            wt(n);
           },
           tooltip: "Save the state as a JSON file"
         },
         {
           icon: "folder_open",
           action: async () => {
-            await Nt(n), t.sendInspectorTree(v), t.sendInspectorState(v);
+            await It(n), s.sendInspectorTree(h), s.sendInspectorState(h);
           },
           tooltip: "Import the state from a JSON file"
         }
@@ -400,24 +400,24 @@ function Vt(e, n) {
         {
           icon: "restore",
           tooltip: "Reset the state (option store only)",
-          action: (s) => {
-            const o = n._s.get(s);
-            o ? o._isOptionsAPI ? (o.$reset(), h(`Store "${s}" reset.`)) : h(`Cannot reset "${s}" store because it's a setup store.`, "warn") : h(`Cannot reset "${s}" store because it wasn't found.`, "warn");
+          action: (t) => {
+            const r = n._s.get(t);
+            r ? r._isOptionsAPI ? (r.$reset(), _(`Store "${t}" reset.`)) : _(`Cannot reset "${t}" store because it's a setup store.`, "warn") : _(`Cannot reset "${t}" store because it wasn't found.`, "warn");
           }
         }
       ]
-    }), t.on.inspectComponent((s, o) => {
-      const a = s.componentInstance && s.componentInstance.proxy;
+    }), s.on.inspectComponent((t, r) => {
+      const a = t.componentInstance && t.componentInstance.proxy;
       if (a && a._pStores) {
-        const r = s.componentInstance.proxy._pStores;
-        Object.values(r).forEach((i) => {
-          s.instanceData.state.push({
+        const o = t.componentInstance.proxy._pStores;
+        Object.values(o).forEach((i) => {
+          t.instanceData.state.push({
             type: ee(i.$id),
             key: "state",
             editable: !0,
             value: i._isOptionsAPI ? {
               _custom: {
-                value: Q(i.$state),
+                value: W(i.$state),
                 actions: [
                   {
                     icon: "restore",
@@ -428,66 +428,66 @@ function Vt(e, n) {
               }
             } : (
               // NOTE: workaround to unwrap transferred refs
-              Object.keys(i.$state).reduce((c, f) => (c[f] = i.$state[f], c), {})
+              Object.keys(i.$state).reduce((l, f) => (l[f] = i.$state[f], l), {})
             )
-          }), i._getters && i._getters.length && s.instanceData.state.push({
+          }), i._getters && i._getters.length && t.instanceData.state.push({
             type: ee(i.$id),
             key: "getters",
             editable: !1,
-            value: i._getters.reduce((c, f) => {
+            value: i._getters.reduce((l, f) => {
               try {
-                c[f] = i[f];
+                l[f] = i[f];
               } catch (p) {
-                c[f] = p;
+                l[f] = p;
               }
-              return c;
+              return l;
             }, {})
           });
         });
       }
-    }), t.on.getInspectorTree((s) => {
-      if (s.app === e && s.inspectorId === v) {
-        let o = [n];
-        o = o.concat(Array.from(n._s.values())), s.rootNodes = (s.filter ? o.filter((a) => "$id" in a ? a.$id.toLowerCase().includes(s.filter.toLowerCase()) : Je.toLowerCase().includes(s.filter.toLowerCase())) : o).map(It);
+    }), s.on.getInspectorTree((t) => {
+      if (t.app === e && t.inspectorId === h) {
+        let r = [n];
+        r = r.concat(Array.from(n._s.values())), t.rootNodes = (t.filter ? r.filter((a) => "$id" in a ? a.$id.toLowerCase().includes(t.filter.toLowerCase()) : Fe.toLowerCase().includes(t.filter.toLowerCase())) : r).map(Nt);
       }
-    }), t.on.getInspectorState((s) => {
-      if (s.app === e && s.inspectorId === v) {
-        const o = s.nodeId === de ? n : n._s.get(s.nodeId);
-        if (!o)
+    }), s.on.getInspectorState((t) => {
+      if (t.app === e && t.inspectorId === h) {
+        const r = t.nodeId === ie ? n : n._s.get(t.nodeId);
+        if (!r)
           return;
-        o && (s.state = Pt(o));
+        r && (t.state = $t(r));
       }
-    }), t.on.editInspectorState((s, o) => {
-      if (s.app === e && s.inspectorId === v) {
-        const a = s.nodeId === de ? n : n._s.get(s.nodeId);
+    }), s.on.editInspectorState((t, r) => {
+      if (t.app === e && t.inspectorId === h) {
+        const a = t.nodeId === ie ? n : n._s.get(t.nodeId);
         if (!a)
-          return h(`store "${s.nodeId}" not found`, "error");
-        const { path: r } = s;
-        he(a) ? r.unshift("state") : (r.length !== 1 || !a._customProperties.has(r[0]) || r[0] in a.$state) && r.unshift("$state"), x = !1, s.set(a, r, s.state.value), x = !0;
+          return _(`store "${t.nodeId}" not found`, "error");
+        const { path: o } = t;
+        ue(a) ? o.unshift("state") : (o.length !== 1 || !a._customProperties.has(o[0]) || o[0] in a.$state) && o.unshift("$state"), M = !1, t.set(a, o, t.state.value), M = !0;
       }
-    }), t.on.editComponentState((s) => {
-      if (s.type.startsWith("🍍")) {
-        const o = s.type.replace(/^🍍\s*/, ""), a = n._s.get(o);
+    }), s.on.editComponentState((t) => {
+      if (t.type.startsWith("🍍")) {
+        const r = t.type.replace(/^🍍\s*/, ""), a = n._s.get(r);
         if (!a)
-          return h(`store "${o}" not found`, "error");
-        const { path: r } = s;
-        if (r[0] !== "state")
-          return h(`Invalid path for store "${o}":
-${r}
+          return _(`store "${r}" not found`, "error");
+        const { path: o } = t;
+        if (o[0] !== "state")
+          return _(`Invalid path for store "${r}":
+${o}
 Only state can be modified.`);
-        r[0] = "$state", x = !1, s.set(a, r, s.state.value), x = !0;
+        o[0] = "$state", M = !1, t.set(a, o, t.state.value), M = !0;
       }
     });
   });
 }
-function Dt(e, n) {
-  K.includes(ee(n.$id)) || K.push(ee(n.$id)), xe({
+function At(e, n) {
+  Z.includes(ee(n.$id)) || Z.push(ee(n.$id)), je({
     id: "dev.esm.pinia",
     label: "Pinia 🍍",
     logo: "https://pinia.vuejs.org/logo.svg",
     packageName: "pinia",
     homepage: "https://pinia.vuejs.org",
-    componentStateTypes: K,
+    componentStateTypes: Z,
     app: e,
     settings: {
       logStoreChanges: {
@@ -501,145 +501,145 @@ function Dt(e, n) {
       //   defaultValue: true,
       // },
     }
-  }, (t) => {
-    const s = typeof t.now == "function" ? t.now.bind(t) : Date.now;
-    n.$onAction(({ after: r, onError: i, name: c, args: f }) => {
-      const p = We++;
-      t.addTimelineEvent({
-        layerId: D,
+  }, (s) => {
+    const t = typeof s.now == "function" ? s.now.bind(s) : Date.now;
+    n.$onAction(({ after: o, onError: i, name: l, args: f }) => {
+      const p = He++;
+      s.addTimelineEvent({
+        layerId: T,
         event: {
-          time: s(),
-          title: "🛫 " + c,
+          time: t(),
+          title: "🛫 " + l,
           subtitle: "start",
           data: {
-            store: O(n.$id),
-            action: O(c),
+            store: S(n.$id),
+            action: S(l),
             args: f
           },
           groupId: p
         }
-      }), r((_) => {
-        k = void 0, t.addTimelineEvent({
-          layerId: D,
+      }), o((m) => {
+        k = void 0, s.addTimelineEvent({
+          layerId: T,
           event: {
-            time: s(),
-            title: "🛬 " + c,
+            time: t(),
+            title: "🛬 " + l,
             subtitle: "end",
             data: {
-              store: O(n.$id),
-              action: O(c),
+              store: S(n.$id),
+              action: S(l),
               args: f,
-              result: _
+              result: m
             },
             groupId: p
           }
         });
-      }), i((_) => {
-        k = void 0, t.addTimelineEvent({
-          layerId: D,
+      }), i((m) => {
+        k = void 0, s.addTimelineEvent({
+          layerId: T,
           event: {
-            time: s(),
+            time: t(),
             logType: "error",
-            title: "💥 " + c,
+            title: "💥 " + l,
             subtitle: "end",
             data: {
-              store: O(n.$id),
-              action: O(c),
+              store: S(n.$id),
+              action: S(l),
               args: f,
-              error: _
+              error: m
             },
             groupId: p
           }
         });
       });
-    }, !0), n._customProperties.forEach((r) => {
-      ke(() => m(n[r]), (i, c) => {
-        t.notifyComponentUpdate(), t.sendInspectorState(v), x && t.addTimelineEvent({
-          layerId: D,
+    }, !0), n._customProperties.forEach((o) => {
+      Ve(() => et(n[o]), (i, l) => {
+        s.notifyComponentUpdate(), s.sendInspectorState(h), M && s.addTimelineEvent({
+          layerId: T,
           event: {
-            time: s(),
+            time: t(),
             title: "Change",
-            subtitle: r,
+            subtitle: o,
             data: {
               newValue: i,
-              oldValue: c
+              oldValue: l
             },
             groupId: k
           }
         });
       }, { deep: !0 });
-    }), n.$subscribe(({ events: r, type: i }, c) => {
-      if (t.notifyComponentUpdate(), t.sendInspectorState(v), !x)
+    }), n.$subscribe(({ events: o, type: i }, l) => {
+      if (s.notifyComponentUpdate(), s.sendInspectorState(h), !M)
         return;
       const f = {
-        time: s(),
-        title: At(i),
-        data: Tt({ store: O(n.$id) }, $t(r)),
+        time: t(),
+        title: Tt(i),
+        data: Vt({ store: S(n.$id) }, Pt(o)),
         groupId: k
       };
-      k = void 0, i === N.patchFunction ? f.subtitle = "⤵️" : i === N.patchObject ? f.subtitle = "🧩" : r && !Array.isArray(r) && (f.subtitle = r.type), r && (f.data["rawEvent(s)"] = {
+      k = void 0, i === O.patchFunction ? f.subtitle = "⤵️" : i === O.patchObject ? f.subtitle = "🧩" : o && !Array.isArray(o) && (f.subtitle = o.type), o && (f.data["rawEvent(s)"] = {
         _custom: {
           display: "DebuggerEvent",
           type: "object",
           tooltip: "raw DebuggerEvent[]",
-          value: r
+          value: o
         }
-      }), t.addTimelineEvent({
-        layerId: D,
+      }), s.addTimelineEvent({
+        layerId: T,
         event: f
       });
     }, { detached: !0, flush: "sync" });
-    const o = n._hotUpdate;
-    n._hotUpdate = P((r) => {
-      o(r), t.addTimelineEvent({
-        layerId: D,
+    const r = n._hotUpdate;
+    n._hotUpdate = N((o) => {
+      r(o), s.addTimelineEvent({
+        layerId: T,
         event: {
-          time: s(),
+          time: t(),
           title: "🔥 " + n.$id,
           subtitle: "HMR update",
           data: {
-            store: O(n.$id),
-            info: O("HMR update")
+            store: S(n.$id),
+            info: S("HMR update")
           }
         }
-      }), t.notifyComponentUpdate(), t.sendInspectorTree(v), t.sendInspectorState(v);
+      }), s.notifyComponentUpdate(), s.sendInspectorTree(h), s.sendInspectorState(h);
     });
     const { $dispose: a } = n;
     n.$dispose = () => {
-      a(), t.notifyComponentUpdate(), t.sendInspectorTree(v), t.sendInspectorState(v), t.getSettings().logStoreChanges && h(`Disposed "${n.$id}" store 🗑`);
-    }, t.notifyComponentUpdate(), t.sendInspectorTree(v), t.sendInspectorState(v), t.getSettings().logStoreChanges && h(`"${n.$id}" store installed 🆕`);
+      a(), s.notifyComponentUpdate(), s.sendInspectorTree(h), s.sendInspectorState(h), s.getSettings().logStoreChanges && _(`Disposed "${n.$id}" store 🗑`);
+    }, s.notifyComponentUpdate(), s.sendInspectorTree(h), s.sendInspectorState(h), s.getSettings().logStoreChanges && _(`"${n.$id}" store installed 🆕`);
   });
 }
-let We = 0, k;
-function Pe(e, n) {
-  const t = n.reduce((s, o) => (s[o] = Q(e)[o], s), {});
-  for (const s in t)
-    e[s] = function() {
-      const o = We, a = new Proxy(e, {
-        get(...r) {
-          return k = o, Reflect.get(...r);
+let He = 0, k;
+function we(e, n) {
+  const s = n.reduce((t, r) => (t[r] = W(e)[r], t), {});
+  for (const t in s)
+    e[t] = function() {
+      const r = He, a = new Proxy(e, {
+        get(...o) {
+          return k = r, Reflect.get(...o);
         },
-        set(...r) {
-          return k = o, Reflect.set(...r);
+        set(...o) {
+          return k = r, Reflect.set(...o);
         }
       });
-      return t[s].apply(a, arguments);
+      return s[t].apply(a, arguments);
     };
 }
-function kt({ app: e, store: n, options: t }) {
+function Dt({ app: e, store: n, options: s }) {
   if (!n.$id.startsWith("__hot:")) {
-    if (t.state && (n._isOptionsAPI = !0), typeof t.state == "function") {
-      Pe(
+    if (s.state && (n._isOptionsAPI = !0), typeof s.state == "function") {
+      we(
         // @ts-expect-error: can cast the store...
         n,
-        Object.keys(t.actions)
+        Object.keys(s.actions)
       );
-      const s = n._hotUpdate;
-      Q(n)._hotUpdate = function(o) {
-        s.apply(this, arguments), Pe(n, Object.keys(o._hmrPayload.actions));
+      const t = n._hotUpdate;
+      W(n)._hotUpdate = function(r) {
+        t.apply(this, arguments), we(n, Object.keys(r._hmrPayload.actions));
       };
     }
-    Dt(
+    At(
       e,
       // FIXME: is there a way to allow the assignment from Store<Id, S, G, A> to StoreGeneric?
       n
@@ -647,16 +647,16 @@ function kt({ app: e, store: n, options: t }) {
   }
 }
 function jt() {
-  const e = De(!0), n = e.run(() => j({}));
-  let t = [], s = [];
-  const o = P({
+  const e = Te(!0), n = e.run(() => G({}));
+  let s = [], t = [];
+  const r = N({
     install(a) {
-      W(o), o._a = a, a.provide(Ue, o), a.config.globalProperties.$pinia = o, J && Vt(a, o), s.forEach((r) => t.push(r)), s = [];
+      B(r), r._a = a, a.provide(Ce, r), a.config.globalProperties.$pinia = r, H && kt(a, r), t.forEach((o) => s.push(o)), t = [];
     },
     use(a) {
-      return !this._a && !Ce ? s.push(a) : t.push(a), this;
+      return !this._a && !Ae ? t.push(a) : s.push(a), this;
     },
-    _p: t,
+    _p: s,
     // it's actually undefined here
     // @ts-expect-error
     _a: null,
@@ -664,506 +664,501 @@ function jt() {
     _s: /* @__PURE__ */ new Map(),
     state: n
   });
-  return J && typeof Proxy < "u" && o.use(kt), o;
+  return H && typeof Proxy < "u" && r.use(Dt), r;
 }
-function Qe(e, n) {
-  for (const t in n) {
-    const s = n[t];
-    if (!(t in e))
+function Ge(e, n) {
+  for (const s in n) {
+    const t = n[s];
+    if (!(s in e))
       continue;
-    const o = e[t];
-    L(o) && L(s) && !U(s) && !te(s) ? e[t] = Qe(o, s) : e[t] = s;
+    const r = e[s];
+    A(r) && A(t) && !R(t) && !te(t) ? e[s] = Ge(r, t) : e[s] = t;
   }
   return e;
 }
-const ze = () => {
+const Be = () => {
 };
-function $e(e, n, t, s = ze) {
+function Oe(e, n, s, t = Be) {
   e.push(n);
-  const o = () => {
+  const r = () => {
     const a = e.indexOf(n);
-    a > -1 && (e.splice(a, 1), s());
+    a > -1 && (e.splice(a, 1), t());
   };
-  return !t && rt() && it(o), o;
+  return !s && st() && nt(r), r;
 }
-function M(e, ...n) {
-  e.slice().forEach((t) => {
-    t(...n);
+function C(e, ...n) {
+  e.slice().forEach((s) => {
+    s(...n);
   });
 }
-function _e(e, n) {
-  e instanceof Map && n instanceof Map && n.forEach((t, s) => e.set(s, t)), e instanceof Set && n instanceof Set && n.forEach(e.add, e);
-  for (const t in n) {
-    if (!n.hasOwnProperty(t))
+function ae(e, n) {
+  e instanceof Map && n instanceof Map && n.forEach((s, t) => e.set(t, s)), e instanceof Set && n instanceof Set && n.forEach(e.add, e);
+  for (const s in n) {
+    if (!n.hasOwnProperty(s))
       continue;
-    const s = n[t], o = e[t];
-    L(o) && L(s) && e.hasOwnProperty(t) && !U(s) && !te(s) ? e[t] = _e(o, s) : e[t] = s;
+    const t = n[s], r = e[s];
+    A(r) && A(t) && e.hasOwnProperty(s) && !R(t) && !te(t) ? e[s] = ae(r, t) : e[s] = t;
   }
   return e;
 }
-const Lt = process.env.NODE_ENV !== "production" ? Symbol("pinia:skipHydration") : (
+const Ct = process.env.NODE_ENV !== "production" ? Symbol("pinia:skipHydration") : (
   /* istanbul ignore next */
   Symbol()
 );
-function Ct(e) {
-  return !L(e) || !e.hasOwnProperty(Lt);
+function Lt(e) {
+  return !A(e) || !e.hasOwnProperty(Ct);
 }
-const { assign: S } = Object;
-function Ae(e) {
-  return !!(U(e) && e.effect);
+const { assign: E } = Object;
+function Ie(e) {
+  return !!(R(e) && e.effect);
 }
-function Te(e, n, t, s) {
-  const { state: o, actions: a, getters: r } = n, i = t.state.value[e];
-  let c;
+function Ne(e, n, s, t) {
+  const { state: r, actions: a, getters: o } = n, i = s.state.value[e];
+  let l;
   function f() {
-    !i && (process.env.NODE_ENV === "production" || !s) && (t.state.value[e] = o ? o() : {});
-    const p = process.env.NODE_ENV !== "production" && s ? (
+    !i && (process.env.NODE_ENV === "production" || !t) && (s.state.value[e] = r ? r() : {});
+    const p = process.env.NODE_ENV !== "production" && t ? (
       // use ref() to unwrap refs inside state TODO: check if this is still necessary
-      Se(j(o ? o() : {}).value)
-    ) : Se(t.state.value[e]);
-    return S(p, a, Object.keys(r || {}).reduce((_, y) => (process.env.NODE_ENV !== "production" && y in p && console.warn(`[🍍]: A getter cannot have the same name as another state property. Rename one of them. Found with "${y}" in store "${e}".`), _[y] = P(me(() => {
-      W(t);
-      const w = t._s.get(e);
-      return r[y].call(w, w);
-    })), _), {}));
+      _e(G(r ? r() : {}).value)
+    ) : _e(s.state.value[e]);
+    return E(p, a, Object.keys(o || {}).reduce((m, v) => (process.env.NODE_ENV !== "production" && v in p && console.warn(`[🍍]: A getter cannot have the same name as another state property. Rename one of them. Found with "${v}" in store "${e}".`), m[v] = N(K(() => {
+      B(s);
+      const w = s._s.get(e);
+      return o[v].call(w, w);
+    })), m), {}));
   }
-  return c = ge(e, f, n, t, s, !0), c;
+  return l = ce(e, f, n, s, t, !0), l;
 }
-function ge(e, n, t = {}, s, o, a) {
-  let r;
-  const i = S({ actions: {} }, t);
-  if (process.env.NODE_ENV !== "production" && !s._e.active)
+function ce(e, n, s = {}, t, r, a) {
+  let o;
+  const i = E({ actions: {} }, s);
+  if (process.env.NODE_ENV !== "production" && !t._e.active)
     throw new Error("Pinia destroyed");
-  const c = {
+  const l = {
     deep: !0
     // flush: 'post',
   };
-  process.env.NODE_ENV !== "production" && !Ce && (c.onTrigger = (u) => {
+  process.env.NODE_ENV !== "production" && !Ae && (l.onTrigger = (u) => {
     f ? w = u : f == !1 && !d._hotUpdating && (Array.isArray(w) ? w.push(u) : console.error("🍍 debuggerEvents should be an array. This is most likely an internal Pinia bug."));
   });
-  let f, p, _ = P([]), y = P([]), w;
-  const $ = s.state.value[e];
-  !a && !$ && (process.env.NODE_ENV === "production" || !o) && (s.state.value[e] = {});
-  const oe = j({});
-  let ye;
-  function ve(u) {
-    let l;
-    f = p = !1, process.env.NODE_ENV !== "production" && (w = []), typeof u == "function" ? (u(s.state.value[e]), l = {
-      type: N.patchFunction,
+  let f, p, m = N([]), v = N([]), w;
+  const D = t.state.value[e];
+  !a && !D && (process.env.NODE_ENV === "production" || !r) && (t.state.value[e] = {});
+  const ne = G({});
+  let fe;
+  function de(u) {
+    let c;
+    f = p = !1, process.env.NODE_ENV !== "production" && (w = []), typeof u == "function" ? (u(t.state.value[e]), c = {
+      type: O.patchFunction,
       storeId: e,
       events: w
-    }) : (_e(s.state.value[e], u), l = {
-      type: N.patchObject,
+    }) : (ae(t.state.value[e], u), c = {
+      type: O.patchObject,
       payload: u,
       storeId: e,
       events: w
     });
-    const g = ye = Symbol();
-    Ee().then(() => {
-      ye === g && (f = !0);
-    }), p = !0, M(_, l, s.state.value[e]);
+    const g = fe = Symbol();
+    me().then(() => {
+      fe === g && (f = !0);
+    }), p = !0, C(m, c, t.state.value[e]);
   }
-  const Ze = a ? function() {
-    const { state: l } = t, g = l ? l() : {};
-    this.$patch((b) => {
-      S(b, g);
+  const ze = a ? function() {
+    const { state: c } = s, g = c ? c() : {};
+    this.$patch((y) => {
+      E(y, g);
     });
   } : (
     /* istanbul ignore next */
     process.env.NODE_ENV !== "production" ? () => {
       throw new Error(`🍍: Store "${e}" is built using the setup syntax and does not implement $reset().`);
-    } : ze
+    } : Be
   );
-  function Ke() {
-    r.stop(), _ = [], y = [], s._s.delete(e);
+  function Ye() {
+    o.stop(), m = [], v = [], t._s.delete(e);
   }
-  function we(u, l) {
+  function ge(u, c) {
     return function() {
-      W(s);
-      const g = Array.from(arguments), b = [], R = [];
-      function et(E) {
-        b.push(E);
+      B(t);
+      const g = Array.from(arguments), y = [], U = [];
+      function qe(b) {
+        y.push(b);
       }
-      function tt(E) {
-        R.push(E);
+      function Xe(b) {
+        U.push(b);
       }
-      M(y, {
+      C(v, {
         args: g,
         name: u,
         store: d,
-        after: et,
-        onError: tt
+        after: qe,
+        onError: Xe
       });
-      let F;
+      let x;
       try {
-        F = l.apply(this && this.$id === e ? this : d, g);
-      } catch (E) {
-        throw M(R, E), E;
+        x = c.apply(this && this.$id === e ? this : d, g);
+      } catch (b) {
+        throw C(U, b), b;
       }
-      return F instanceof Promise ? F.then((E) => (M(b, E), E)).catch((E) => (M(R, E), Promise.reject(E))) : (M(b, F), F);
+      return x instanceof Promise ? x.then((b) => (C(y, b), b)).catch((b) => (C(U, b), Promise.reject(b))) : (C(y, x), x);
     };
   }
-  const z = /* @__PURE__ */ P({
+  const J = /* @__PURE__ */ N({
     actions: {},
     getters: {},
     state: [],
-    hotState: oe
-  }), be = {
-    _p: s,
+    hotState: ne
+  }), pe = {
+    _p: t,
     // _s: scope,
     $id: e,
-    $onAction: $e.bind(null, y),
-    $patch: ve,
-    $reset: Ze,
-    $subscribe(u, l = {}) {
-      const g = $e(_, u, l.detached, () => b()), b = r.run(() => ke(() => s.state.value[e], (R) => {
-        (l.flush === "sync" ? p : f) && u({
+    $onAction: Oe.bind(null, v),
+    $patch: de,
+    $reset: ze,
+    $subscribe(u, c = {}) {
+      const g = Oe(m, u, c.detached, () => y()), y = o.run(() => Ve(() => t.state.value[e], (U) => {
+        (c.flush === "sync" ? p : f) && u({
           storeId: e,
-          type: N.direct,
+          type: O.direct,
           events: w
-        }, R);
-      }, S({}, c, l)));
+        }, U);
+      }, E({}, l, c)));
       return g;
     },
-    $dispose: Ke
-  }, d = ot(process.env.NODE_ENV !== "production" || J ? S(
+    $dispose: Ye
+  }, d = tt(process.env.NODE_ENV !== "production" || H ? E(
     {
-      _hmrPayload: z,
-      _customProperties: P(/* @__PURE__ */ new Set())
+      _hmrPayload: J,
+      _customProperties: N(/* @__PURE__ */ new Set())
       // devtools custom properties
     },
-    be
+    pe
     // must be added later
     // setupStore
-  ) : be);
-  s._s.set(e, d);
-  const A = s._e.run(() => (r = De(), r.run(() => n())));
-  for (const u in A) {
-    const l = A[u];
-    if (U(l) && !Ae(l) || te(l))
-      process.env.NODE_ENV !== "production" && o ? Y(oe.value, u, q(A, u)) : a || ($ && Ct(l) && (U(l) ? l.value = $[u] : _e(l, $[u])), s.state.value[e][u] = l), process.env.NODE_ENV !== "production" && z.state.push(u);
-    else if (typeof l == "function") {
-      const g = process.env.NODE_ENV !== "production" && o ? l : we(u, l);
-      A[u] = g, process.env.NODE_ENV !== "production" && (z.actions[u] = l), i.actions[u] = l;
+  ) : pe);
+  t._s.set(e, d);
+  const $ = t._e.run(() => (o = Te(), o.run(() => n())));
+  for (const u in $) {
+    const c = $[u];
+    if (R(c) && !Ie(c) || te(c))
+      process.env.NODE_ENV !== "production" && r ? Q(ne.value, u, z($, u)) : a || (D && Lt(c) && (R(c) ? c.value = D[u] : ae(c, D[u])), t.state.value[e][u] = c), process.env.NODE_ENV !== "production" && J.state.push(u);
+    else if (typeof c == "function") {
+      const g = process.env.NODE_ENV !== "production" && r ? c : ge(u, c);
+      $[u] = g, process.env.NODE_ENV !== "production" && (J.actions[u] = c), i.actions[u] = c;
     } else
-      process.env.NODE_ENV !== "production" && Ae(l) && (z.getters[u] = a ? (
+      process.env.NODE_ENV !== "production" && Ie(c) && (J.getters[u] = a ? (
         // @ts-expect-error
-        t.getters[u]
-      ) : l, ne && (A._getters || // @ts-expect-error: same
-      (A._getters = P([]))).push(u));
+        s.getters[u]
+      ) : c, se && ($._getters || // @ts-expect-error: same
+      ($._getters = N([]))).push(u));
   }
-  if (S(d, A), S(Q(d), A), Object.defineProperty(d, "$state", {
-    get: () => process.env.NODE_ENV !== "production" && o ? oe.value : s.state.value[e],
+  if (E(d, $), E(W(d), $), Object.defineProperty(d, "$state", {
+    get: () => process.env.NODE_ENV !== "production" && r ? ne.value : t.state.value[e],
     set: (u) => {
-      if (process.env.NODE_ENV !== "production" && o)
+      if (process.env.NODE_ENV !== "production" && r)
         throw new Error("cannot set hotState");
-      ve((l) => {
-        S(l, u);
+      de((c) => {
+        E(c, u);
       });
     }
-  }), process.env.NODE_ENV !== "production" && (d._hotUpdate = P((u) => {
-    d._hotUpdating = !0, u._hmrPayload.state.forEach((l) => {
-      if (l in d.$state) {
-        const g = u.$state[l], b = d.$state[l];
-        typeof g == "object" && L(g) && L(b) ? Qe(g, b) : u.$state[l] = b;
+  }), process.env.NODE_ENV !== "production" && (d._hotUpdate = N((u) => {
+    d._hotUpdating = !0, u._hmrPayload.state.forEach((c) => {
+      if (c in d.$state) {
+        const g = u.$state[c], y = d.$state[c];
+        typeof g == "object" && A(g) && A(y) ? Ge(g, y) : u.$state[c] = y;
       }
-      Y(d, l, q(u.$state, l));
-    }), Object.keys(d.$state).forEach((l) => {
-      l in u.$state || le(d, l);
-    }), f = !1, p = !1, s.state.value[e] = q(u._hmrPayload, "hotState"), p = !0, Ee().then(() => {
+      Q(d, c, z(u.$state, c));
+    }), Object.keys(d.$state).forEach((c) => {
+      c in u.$state || oe(d, c);
+    }), f = !1, p = !1, t.state.value[e] = z(u._hmrPayload, "hotState"), p = !0, me().then(() => {
       f = !0;
     });
-    for (const l in u._hmrPayload.actions) {
-      const g = u[l];
-      Y(d, l, we(l, g));
+    for (const c in u._hmrPayload.actions) {
+      const g = u[c];
+      Q(d, c, ge(c, g));
     }
-    for (const l in u._hmrPayload.getters) {
-      const g = u._hmrPayload.getters[l], b = a ? (
+    for (const c in u._hmrPayload.getters) {
+      const g = u._hmrPayload.getters[c], y = a ? (
         // special handling of options api
-        me(() => (W(s), g.call(d, d)))
+        K(() => (B(t), g.call(d, d)))
       ) : g;
-      Y(d, l, b);
+      Q(d, c, y);
     }
-    Object.keys(d._hmrPayload.getters).forEach((l) => {
-      l in u._hmrPayload.getters || le(d, l);
-    }), Object.keys(d._hmrPayload.actions).forEach((l) => {
-      l in u._hmrPayload.actions || le(d, l);
+    Object.keys(d._hmrPayload.getters).forEach((c) => {
+      c in u._hmrPayload.getters || oe(d, c);
+    }), Object.keys(d._hmrPayload.actions).forEach((c) => {
+      c in u._hmrPayload.actions || oe(d, c);
     }), d._hmrPayload = u._hmrPayload, d._getters = u._getters, d._hotUpdating = !1;
-  })), J) {
+  })), H) {
     const u = {
       writable: !0,
       configurable: !0,
       // avoid warning on devtools trying to display this property
       enumerable: !1
     };
-    ["_p", "_hmrPayload", "_getters", "_customProperties"].forEach((l) => {
-      Object.defineProperty(d, l, S({ value: d[l] }, u));
+    ["_p", "_hmrPayload", "_getters", "_customProperties"].forEach((c) => {
+      Object.defineProperty(d, c, E({ value: d[c] }, u));
     });
   }
-  return s._p.forEach((u) => {
-    if (J) {
-      const l = r.run(() => u({
+  return t._p.forEach((u) => {
+    if (H) {
+      const c = o.run(() => u({
         store: d,
-        app: s._a,
-        pinia: s,
+        app: t._a,
+        pinia: t,
         options: i
       }));
-      Object.keys(l || {}).forEach((g) => d._customProperties.add(g)), S(d, l);
+      Object.keys(c || {}).forEach((g) => d._customProperties.add(g)), E(d, c);
     } else
-      S(d, r.run(() => u({
+      E(d, o.run(() => u({
         store: d,
-        app: s._a,
-        pinia: s,
+        app: t._a,
+        pinia: t,
         options: i
       })));
   }), process.env.NODE_ENV !== "production" && d.$state && typeof d.$state == "object" && typeof d.$state.constructor == "function" && !d.$state.constructor.toString().includes("[native code]") && console.warn(`[🍍]: The "state" must be a plain object. It cannot be
 	state: () => new MyClass()
-Found in store "${d.$id}".`), $ && a && t.hydrate && t.hydrate(d.$state, $), f = !0, p = !0, d;
+Found in store "${d.$id}".`), D && a && s.hydrate && s.hydrate(d.$state, D), f = !0, p = !0, d;
 }
-function Mt(e, n, t) {
-  let s, o;
+function Mt(e, n, s) {
+  let t, r;
   const a = typeof n == "function";
-  typeof e == "string" ? (s = e, o = a ? t : n) : (o = e, s = e.id);
-  function r(i, c) {
-    const f = st();
+  typeof e == "string" ? (t = e, r = a ? s : n) : (r = e, t = e.id);
+  function o(i, l) {
+    const f = Ze();
     if (i = // in test mode, ignore the argument provided as we can always retrieve a
     // pinia instance with getActivePinia()
-    (process.env.NODE_ENV === "test" && G && G._testing ? null : i) || f && nt(Ue, null), i && W(i), process.env.NODE_ENV !== "production" && !G)
+    (process.env.NODE_ENV === "test" && F && F._testing ? null : i) || f && Ke(Ce, null), i && B(i), process.env.NODE_ENV !== "production" && !F)
       throw new Error(`[🍍]: getActivePinia was called with no active Pinia. Did you forget to install pinia?
 	const pinia = createPinia()
 	app.use(pinia)
 This will fail in production.`);
-    i = G, i._s.has(s) || (a ? ge(s, n, o, i) : Te(s, o, i), process.env.NODE_ENV !== "production" && (r._pinia = i));
-    const p = i._s.get(s);
-    if (process.env.NODE_ENV !== "production" && c) {
-      const _ = "__hot:" + s, y = a ? ge(_, n, o, i, !0) : Te(_, S({}, o), i, !0);
-      c._hotUpdate(y), delete i.state.value[_], i._s.delete(_);
+    i = F, i._s.has(t) || (a ? ce(t, n, r, i) : Ne(t, r, i), process.env.NODE_ENV !== "production" && (o._pinia = i));
+    const p = i._s.get(t);
+    if (process.env.NODE_ENV !== "production" && l) {
+      const m = "__hot:" + t, v = a ? ce(m, n, r, i, !0) : Ne(m, E({}, r), i, !0);
+      l._hotUpdate(v), delete i.state.value[m], i._s.delete(m);
     }
-    if (process.env.NODE_ENV !== "production" && ne && f && f.proxy && // avoid adding stores that are just built for hot module replacement
-    !c) {
-      const _ = f.proxy, y = "_pStores" in _ ? _._pStores : _._pStores = {};
-      y[s] = p;
+    if (process.env.NODE_ENV !== "production" && se && f && f.proxy && // avoid adding stores that are just built for hot module replacement
+    !l) {
+      const m = f.proxy, v = "_pStores" in m ? m._pStores : m._pStores = {};
+      v[t] = p;
     }
     return p;
   }
-  return r.$id = s, r;
+  return o.$id = t, o;
 }
-function xt(e) {
+function Rt(e) {
   {
-    e = Q(e);
+    e = W(e);
     const n = {};
-    for (const t in e) {
-      const s = e[t];
-      (U(s) || te(s)) && (n[t] = // ---
-      q(e, t));
+    for (const s in e) {
+      const t = e[s];
+      (R(t) || te(t)) && (n[s] = // ---
+      z(e, s));
     }
     return n;
   }
 }
-const Ye = Mt("messages", () => {
-  const e = j([]), n = j(!1), t = j(null), s = j("top-right");
-  function o(c) {
-    e.value.push(c), c.duration && setTimeout(() => a(c), c.duration);
+const $e = {
+  body: "Wait please ..",
+  type: "wait",
+  id: "default"
+}, Ut = (e, n) => !n.find((s) => s.type === e.type && s.id === e.id), We = Mt("messages", () => {
+  const e = G([]), n = G("top-right");
+  function s(o) {
+    Ut(o, e.value) && (o.type == "wait" ? e.value.unshift(o) : e.value.push(o), o.duration && setTimeout(() => t(o.id), o.duration));
   }
-  function a(c) {
-    e.value = e.value.filter((f) => f.id !== c.id);
+  function t(o) {
+    e.value = e.value.filter(
+      (i) => i.id !== o
+    );
   }
-  function r(c) {
-    c && (t.value = c, t.value.type = "wait"), n.value = !0;
+  function r(o) {
+    o ? o.type === "wait" && s(o) : s($e);
   }
-  function i() {
-    t.value = null, n.value = !1;
+  function a(o) {
+    t(o || $e.id);
   }
   return {
     messages: e,
-    wait: t,
-    position: s,
-    isWait: n,
-    removeMessage: a,
-    newMessage: o,
-    waitAction: r,
-    unwaitAction: i
+    position: n,
+    removeMessage: t,
+    newMessage: s,
+    startWait: r,
+    stopWait: a
   };
-});
-function ue(e) {
-  return Array.isArray(e) ? e.join(" ") : e;
-}
-const Ut = ["data-message-type"], Rt = { class: "message__img" }, Ft = ["src"], Ht = se({
-  name: "AppToast"
-}), Gt = /* @__PURE__ */ se({
-  ...Ht,
+}), Pe = (e) => Array.isArray(e) ? e.join(" ") : e, xt = ke({
+  name: "MessageItem",
   props: {
-    message: null
+    message: {
+      required: !0,
+      type: Object
+    }
   },
-  emits: ["remove"],
-  setup(e, { emit: n }) {
-    const t = e, s = je();
-    function o(a) {
-      a && a.type !== "wait" && n("remove", a);
+  emits: {
+    remove: (e) => e
+  },
+  setup(e, n) {
+    function s(i) {
+      n.emit("remove", i);
     }
-    return (a, r) => (T(), H("li", {
-      class: V([
-        m(s).message__item,
-        m(s)[`message__item--${t.message.type}`],
-        m(ue)(t.message.class || "")
-      ]),
-      "data-message-type": t.message.type
-    }, [
-      re("div", Rt, [
-        B(a.$slots, `message__img-${t.message.type}`, {
-          item: t.message
-        }, () => [
-          t.message.img ? (T(), H("img", {
-            key: 1,
-            src: typeof t.message.img == "object" ? t.message.img.value : t.message.img,
-            class: V([
-              m(s)["message__img-custom"],
-              typeof t.message.img == "object" ? m(ue)(t.message.img.class) : ""
-            ]),
-            alt: "message avatar"
-          }, null, 10, Ft)) : (T(), H("div", {
-            key: 0,
-            class: V(t.message.type === "wait" ? m(s)["message__img-wait"] : t.message.type === "success" ? m(s)["message__img-success"] : t.message.type === "error" ? m(s)["message__img-error"] : t.message.type === "warning" ? m(s)["message__img-warning"] : m(s)["message__img-custom"])
-          }, Oe(t.message.type === "success" ? "✓" : t.message.type === "warning" ? "!" : ""), 3))
-        ])
-      ]),
-      re("div", {
-        class: V(m(s).message__title)
-      }, [
-        B(a.$slots, `message__title-${t.message.type}`, {
-          item: { ...t.message }
-        }, () => [
-          re("p", {
-            class: V([
-              m(s)["message__title-content"],
-              typeof t.message.title == "object" ? m(ue)(t.message.title.class) : ""
-            ])
-          }, Oe(typeof t.message.title == "object" ? t.message.title.value : t.message.title), 3)
-        ])
-      ], 2),
-      t.message.type !== "wait" ? (T(), H("button", {
-        key: 0,
-        type: "button",
-        class: V(m(s).message__close),
-        onClick: r[0] || (r[0] = (i) => o(t.message))
-      }, [
-        B(a.$slots, "message__delete-btn", {}, () => [
-          at(" × ")
-        ])
-      ], 2)) : Le("", !0)
-    ], 10, Ut));
-  }
-}), Bt = "_message__item_1mhlw_1", Jt = "_message__title_1mhlw_25", Wt = "_message__img_1mhlw_28", Qt = "_message__close_1mhlw_100", zt = {
-  message__item: Bt,
-  "message__item--error": "_message__item--error_1mhlw_12",
-  "message__item--wait": "_message__item--wait_1mhlw_15",
-  "message__item--success": "_message__item--success_1mhlw_19",
-  "message__item--warning": "_message__item--warning_1mhlw_22",
-  "message__item--custom": "_message__item--custom_1mhlw_25",
-  message__title: Jt,
-  message__img: Wt,
-  "message__img-error": "_message__img-error_1mhlw_34",
-  "message__img-wait": "_message__img-wait_1mhlw_58",
-  "lds-hourglass": "_lds-hourglass_1mhlw_1",
-  "message__img-success": "_message__img-success_1mhlw_78",
-  "message__img-custom": "_message__img-custom_1mhlw_83",
-  "message__img-warning": "_message__img-warning_1mhlw_87",
-  message__close: Qt
-}, qe = (e, n) => {
-  const t = e.__vccOpts || e;
-  for (const [s, o] of n)
-    t[s] = o;
-  return t;
-}, Yt = {
-  $style: zt
-}, Ve = /* @__PURE__ */ qe(Gt, [["__cssModules", Yt]]), qt = {
-  title: "Wait please ..",
-  type: "wait"
-}, Xt = se({
-  name: "MessagesHandleComponent"
-}), Zt = /* @__PURE__ */ se({
-  ...Xt,
-  setup(e) {
-    const n = je(), t = Ye(), { messages: s, wait: o, position: a, isWait: r } = xt(t), i = me(() => o.value ? o.value : qt);
-    function c(f) {
-      t.removeMessage(f);
+    function t(i) {
+      if (i && typeof i == "object")
+        return Pe(i.class);
     }
-    return (f, p) => (T(), ie(ct, {
-      name: "list",
-      tag: "ul",
-      class: V([m(n).message__list, `message__list--${m(a)}`])
-    }, {
-      default: ae(() => [
-        m(r) ? (T(), ie(Ve, {
-          key: 0,
-          message: m(i)
-        }, Ne({ _: 2 }, [
-          ce(f.$slots, (_, y) => ({
-            name: y,
-            fn: ae(() => [
-              B(f.$slots, y)
-            ])
-          }))
-        ]), 1032, ["message"])) : Le("", !0),
-        (T(!0), H(lt, null, ce(m(s), (_) => (T(), ie(Ve, {
-          key: _.id,
-          message: _,
-          onRemove: c
-        }, Ne({ _: 2 }, [
-          ce(f.$slots, (y, w) => ({
-            name: w,
-            fn: ae(($) => [
-              B(f.$slots, w, {
-                item: { ...$ }
-              })
-            ])
-          }))
-        ]), 1032, ["message"]))), 128))
-      ]),
-      _: 3
-    }, 8, ["class"]));
+    function r(i) {
+      return i && typeof i == "object" ? i.value : i;
+    }
+    const a = K(() => e.message.type === "success" ? "&#10003;" : e.message.type === "warning" ? "!" : ""), o = K(
+      () => typeof e.message.body == "object" && typeof e.message.body.value == "string" || typeof e.message.body == "string"
+    );
+    return {
+      removeMessage: s,
+      getMessageClass: Pe,
+      getFieldValue: r,
+      getFieldClassList: t,
+      getMessageImgBlockContent: a,
+      isShowMessageContent: o
+    };
   }
-}), Kt = "_message__list_poj2d_1", es = {
-  message__list: Kt
+});
+const Je = (e, n) => {
+  const s = e.__vccOpts || e;
+  for (const [t, r] of n)
+    s[t] = r;
+  return s;
+}, Ft = ["data-message-type"], Ht = { class: "message__img" }, Gt = ["data-testid", "innerHTML"], Bt = ["src"], Wt = {
+  class: /* @__PURE__ */ V("message__title"),
+  "data-testid": "message__title-block"
 };
-const ts = {
-  $style: es
-}, Xe = /* @__PURE__ */ qe(Zt, [["__cssModules", ts]]);
-function ss(e) {
+function Jt(e, n, s, t, r, a) {
+  return P(), L("li", {
+    "data-testid": "message__item",
+    class: V(`message__item message__item--${e.message.type} ${e.getMessageClass(
+      e.message.class
+    )}`),
+    "data-message-type": e.message.type
+  }, [
+    he("div", Ht, [
+      Y(e.$slots, `message__img-${e.message.type}`, { item: e.message }, () => [
+        e.message.img ? (P(), L("img", {
+          key: 1,
+          src: e.getFieldValue(e.message.img),
+          class: V(`message__img-custom ${e.getFieldClassList(e.message.img)}`),
+          "data-testid": "message__img-custom",
+          alt: "message avatar"
+        }, null, 10, Bt)) : (P(), L("div", {
+          key: 0,
+          "data-testid": `message__img-block-${e.message.type}`,
+          class: V(`message__img-${e.message.type}`),
+          innerHTML: e.getMessageImgBlockContent
+        }, null, 10, Gt))
+      ], !0)
+    ]),
+    he("div", Wt, [
+      Y(e.$slots, `message__title-${e.message.type}`, {
+        item: { ...e.message }
+      }, () => [
+        e.isShowMessageContent ? (P(), L("p", {
+          key: 0,
+          class: V(`message__title-content ${e.getFieldClassList(e.message.body)}`),
+          "data-testid": "message__title-content"
+        }, ot(e.getFieldValue(e.message.body)), 3)) : ye("", !0)
+      ], !0)
+    ]),
+    e.message.type !== "wait" ? (P(), L("button", {
+      key: 0,
+      type: "button",
+      class: V("message__close"),
+      "data-testid": "message__close-button",
+      onClick: n[0] || (n[0] = (o) => e.removeMessage(e.message))
+    }, [
+      Y(e.$slots, "message__delete-btn", {}, () => [
+        rt(" × ")
+      ], !0)
+    ])) : ye("", !0)
+  ], 10, Ft);
+}
+const Qt = /* @__PURE__ */ Je(xt, [["render", Jt], ["__scopeId", "data-v-99167941"]]), zt = ke({
+  name: "MessageList",
+  components: {
+    MessageItem: Qt
+  },
+  setup() {
+    const e = We(), { messages: n, position: s } = Rt(e);
+    function t(r) {
+      e.removeMessage(r.id);
+    }
+    return {
+      messages: n,
+      removeMessage: t,
+      position: s
+    };
+  }
+});
+function Yt(e, n, s, t, r, a) {
+  const o = it("MessageItem");
+  return P(), ve(at, {
+    name: "list",
+    tag: "ul",
+    class: V(["message__list", `message__list--${e.position}`])
+  }, {
+    default: be(() => [
+      (P(!0), L(ct, null, Ee(e.messages, (i) => (P(), ve(o, {
+        key: i.id,
+        message: i,
+        onRemove: e.removeMessage
+      }, lt({ _: 2 }, [
+        Ee(e.$slots, (l, f) => ({
+          name: f,
+          fn: be((p) => [
+            Y(e.$slots, f, {
+              item: { ...p }
+            }, void 0, !0)
+          ])
+        }))
+      ]), 1032, ["message", "onRemove"]))), 128))
+    ]),
+    _: 3
+  }, 8, ["class"]);
+}
+const Qe = /* @__PURE__ */ Je(zt, [["render", Yt], ["__scopeId", "data-v-0007e307"]]);
+function qt(e) {
   return { ...e, id: Date.now().toString() };
 }
-const ns = {
+const Xt = {
   install: (e, n) => {
-    const t = Ye();
-    n != null && n.position && (t.position = n.position);
-    function s(c) {
-      const f = ss(c);
-      t.newMessage(f);
+    const s = We();
+    n != null && n.position && (s.position = n.position);
+    function t(l) {
+      const f = qt(l);
+      s.newMessage(f);
     }
-    function o(c) {
-      t.removeMessage(c);
+    function r(l) {
+      s.removeMessage(l);
     }
-    function a(c) {
-      t.waitAction(c);
+    function a(l) {
+      s.startWait(l);
     }
-    function r() {
-      t.unwaitAction();
+    function o(l) {
+      s.stopWait(l);
     }
     const i = {
-      addNewMessage: s,
-      removeMessage: o,
-      waitAction: a,
-      stopAction: r
+      addNewMessage: t,
+      removeMessage: r,
+      startWait: a,
+      stopWait: o
     };
-    e.provide("message", i), e.component("VMessage", Xe), e.config.globalProperties.$message = i;
+    e.provide("message", i), e.component("VMessage", Qe), e.config.globalProperties.$message = i;
   }
-}, rs = {
+}, Kt = {
   install: (e, n) => {
-    e.component("AppMessages", Xe);
-    const t = jt();
-    e.use(t), e.use(ns, n);
+    e.component("AppMessages", Qe);
+    const s = jt();
+    e.use(s), e.use(Xt, n);
   }
 };
 export {
-  rs as default
+  Kt as default
 };

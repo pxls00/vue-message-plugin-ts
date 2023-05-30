@@ -1,1 +1,0 @@
-{"version":3,"file":"message-item-field.d.ts","sourceRoot":"","sources":["../../../src/interfaces/messages/message-item-field.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,gBAAgB,MAAM,2CAA2C,CAAA;AAE7E,UAAU,gBAAgB;IACxB,KAAK,EAAE,MAAM,GAAG,GAAG,CAAA;IACnB,KAAK,EAAE,gBAAgB,CAAA;CACxB;AAED,eAAe,gBAAgB,CAAA"}

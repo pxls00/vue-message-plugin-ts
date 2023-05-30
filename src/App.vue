@@ -1,25 +1,8 @@
 <template>
   <v-message />
-  <button @click="newMessage">
-    Add New message
-  </button>
 </template>
 
-<script setup lang="ts">
-import { useMessageStore } from '@/modules/messages-list/store/index'
-
-const store = useMessageStore()
-
-function newMessage() {
-  store.newMessage({
-    body: 'test123',
-    id: Date.now(),
-    class: ['asdasd'],
-    type: 'custom',
-    img: '/public/vite.svg',
-  })
-}
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss">
 body {
