@@ -14,7 +14,7 @@ export default defineComponent({
   props: {
     message: {
       required: true,
-      type: Object as PropType<IMessageItem>,
+      type: Object as PropType<IMessageItem> | null,
     },
   },
 
