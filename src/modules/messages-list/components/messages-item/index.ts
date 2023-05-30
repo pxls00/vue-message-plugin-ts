@@ -5,7 +5,6 @@ import getMessageClass from '@/modules/messages-list/helpers/get-message-class'
 import type { PropType } from 'vue'
 import type {
   IMessageItem,
-  IMessageWait,
   TMessageField,
 } from '@/modules/messages-list/index.types'
 
@@ -15,7 +14,7 @@ export default defineComponent({
   props: {
     message: {
       required: true,
-      type: Object as PropType<IMessageItem> | PropType<IMessageWait>,
+      type: Object as PropType<IMessageItem>,
     },
   },
 
@@ -24,7 +23,7 @@ export default defineComponent({
   },
 
   setup(props, context) {
-    /* The removeMessage only works when message is not IMessageWait */
+    /* The removeMessage only works when message has not type === wait */
     function removeMessage(message: IMessageItem): void {
       context.emit('remove', message)
     }

@@ -15,10 +15,10 @@ export enum EMessageTypes {
   'success',
   'warning',
   'custom',
+  'wait',
 }
 
 // Types
-export type TMessageWaitType = 'wait'
 export type TMessageId = number | string
 export type TMessageTypes = keyof typeof EMessageTypes
 export type TMessageField<T> = string | IMessageField<T>
@@ -43,16 +43,6 @@ export interface IMessageBase<
   duration?: number
 }
 
-export interface IMessageWait<
-  MessageBodyField = undefined,
-  MessageImgField = undefined
-> {
-  body: TMessageField<MessageBodyField>
-  img?: TMessageField<MessageImgField>
-  class?: TMessageClass
-  type: TMessageWaitType
-}
-
 export interface IMessageItem extends IMessageBase {
   id: TMessageId
 }
@@ -63,7 +53,7 @@ export interface IMessagesOption {
 
 export interface IMessagesPlugin {
   addNewMessage(message: IMessageBase): void
-  removeMessage(message: IMessageItem): void
-  waitAction(message?: IMessageWait): void
-  stopAction(): void
+  removeMessage(id: TMessageId): void
+  startWait(message?: IMessageItem): void
+  stopWait(id?: TMessageId): void
 }
