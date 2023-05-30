@@ -16,47 +16,149 @@ module.exports = {
     'jest': true
   },
   rules: {
-    // lines for vue eslint config
-    'vue/max-attributes-per-line': [
+    'no-console': ['error', { allow: ['warn', 'error', 'debug'] }],
+    // 'etc/no-commented-out-code': 'warn',
+    'no-extra-boolean-cast': 0,
+    'vue/attributes-order': [
       'error',
       {
-        singleline: {
-          max: 3,
+        order: [
+          'DEFINITION',
+          'LIST_RENDERING',
+          'CONDITIONALS',
+          'RENDER_MODIFIERS',
+          'GLOBAL',
+          ['UNIQUE', 'SLOT'],
+          'TWO_WAY_BINDING',
+          'OTHER_DIRECTIVES',
+          'OTHER_ATTR',
+          'EVENTS',
+          'CONTENT',
+        ],
+        alphabetical: false,
+      },
+    ],
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'always',
+          normal: 'never',
+          component: 'always',
         },
-        multiline: {
-          max: 1,
+        svg: 'always',
+        math: 'always',
+      },
+    ],
+    'vue/component-name-in-template-casing': [
+      'error',
+      'PascalCase',
+      {
+        registeredComponentsOnly: true,
+      },
+    ],
+    'vue/custom-event-name-casing': [
+      'error',
+      'camelCase',
+      {
+        ignores: [],
+      },
+    ],
+    'vue/component-definition-name-casing': ['error', 'PascalCase'],
+    'vue/order-in-components': [
+      'error',
+      {
+        order: [
+          'name',
+          'components',
+          'inheritAttrs',
+          'props',
+          'emits',
+          'setup',
+        ],
+      },
+    ],
+    'vue/attribute-hyphenation': ['error', 'always'],
+    'vue/v-on-event-hyphenation': [
+      'error',
+      'always',
+      {
+        autofix: true,
+      },
+    ],
+    'vue/prefer-true-attribute-shorthand': ['error'],
+    'vue/block-lang': [
+      'error',
+      {
+        script: {
+          lang: 'ts',
         },
       },
     ],
-    'vue/html-indent': ['error', 2],
-    'no-multi-spaces': ['error'],
-
-    // lines for simple eslint config
-    'no-unused-vars': [
+    'vue/no-v-html': 'off',
+    'vue/valid-v-slot': [
       'error',
       {
-        args: 'none',
+        allowModifiers: true,
       },
     ],
-    semi: ['error', 'never'], // no ;
-    quotes: ['error', 'single'], // no "
-    indent: ['error', 2, { SwitchCase: 1 }],
-    'no-multiple-empty-lines': [
+    // 'vue-scoped-css/enforce-style-type': ['error', { allows: ['scoped'] }],
+    // 'import/order': [
+    //   'error',
+    //   {
+    //     groups: [
+    //       'builtin',
+    //       'external',
+    //       'parent',
+    //       'sibling',
+    //       'index',
+    //       'object',
+    //       'type',
+    //     ],
+    //     pathGroups: [
+    //       {
+    //         pattern: '@/**/**',
+    //         group: 'parent',
+    //         position: 'before',
+    //       },
+    //     ],
+    //   },
+    // ],
+    "vue/multi-word-component-names": ["error", {
+      "ignores": ['index']
+    }],
+    'arrow-body-style': ['error', 'as-needed'],
+    'no-restricted-imports': 'off',
+    '@typescript-eslint/no-restricted-imports': [
       'error',
       {
-        // limit empty lines
-        max: 2,
-        maxEOF: 0,
+        patterns: [
+          {
+            group: ['src/*'],
+            message: 'The path must not begin with \'src\'',
+          },
+        ],
       },
     ],
-    'space-before-function-paren': ['error', 'always'], // space before "()"" in function
-    'space-before-blocks': ['error', 'always'], // space before {}
-    'space-in-parens': ['error', 'never'],
-    'array-bracket-spacing': ['error', 'never'],
-    // 'comma-dangle': ['error', 'never'],
-    'max-params': ['error', 4],
-    'no-async-promise-executor': 0, // allows using an async function as a Promise executor.
-    'no-undef': 'warn',
-    'no-useless-catch': 'off', // TODO: research how to fix no-useless-catch
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    // '@typescript-eslint/naming-convention': [
+    //   'error',
+    //   {
+    //     selector: 'interface',
+    //     format: ['PascalCase'],
+    //     custom: {
+    //       regex: '^I[A-Z]',
+    //       match: true,
+    //     },
+    //   },
+    // ],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^_',
+      },
+    ],
   },
 }

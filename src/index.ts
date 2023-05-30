@@ -1,14 +1,13 @@
-import MessagesList from '@/components/messages-list.vue'
 import { createPinia, type Pinia } from 'pinia'
-import MessagePlugin from '@/plugins/message'
+import { MessagesList, MessagesPlugin } from '@/modules/messages-list'
 
-import type MessageOptions from '@/interfaces/plugin-options'
+import type { IMessagesOption } from '@/modules/messages-list/index.types'
 
 export default {
-  install: (app: any, options?: MessageOptions) => {
+  install: (app: any, options?: IMessagesOption) => {
     app.component('AppMessages', MessagesList)
     const pinia = createPinia() as Pinia
     app.use(pinia)
-    app.use(MessagePlugin, options)
+    app.use(MessagesPlugin, options)
   },
 }
