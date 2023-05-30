@@ -43,7 +43,10 @@ export interface IMessageBase<
   duration?: number
 }
 
-export interface IMessageItem extends IMessageBase {
+export interface IMessageItem<
+  MessageBodyField = undefined,
+  MessageImgField = undefined
+> extends IMessageBase<MessageBodyField, MessageImgField> {
   id: TMessageId
 }
 
