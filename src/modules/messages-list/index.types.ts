@@ -19,7 +19,6 @@ export enum EMessageTypes {
 }
 
 // Types
-export type TMessageWaitType = 'wait'
 export type TMessageId = number | string
 export type TMessageTypes = keyof typeof EMessageTypes
 export type TMessageField<T> = string | IMessageField<T>
@@ -42,16 +41,6 @@ export interface IMessageBase<
   class?: TMessageClass
   key?: string
   duration?: number
-}
-
-export interface IMessageWait<
-  MessageBodyField = undefined,
-  MessageImgField = undefined
-> {
-  body: TMessageField<MessageBodyField>
-  img?: TMessageField<MessageImgField>
-  class?: TMessageClass
-  type: TMessageWaitType
 }
 
 export interface IMessageItem extends IMessageBase {

@@ -16,8 +16,8 @@ export default defineComponent({
 
     const { messages, position } = storeToRefs(store)
 
-    function removeMessage({ id }: IMessageItem): void {
-      store.removeMessage(id)
+    function removeMessage(message: IMessageItem): void {
+      store.removeMessage(message.id)
     }
 
     return {

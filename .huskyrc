@@ -1,0 +1,5 @@
+{
+  "hooks": {
+    "pre-commit": "git diff --cached --name-only | grep -E '^dist/' || lint-staged"
+  }
+}
