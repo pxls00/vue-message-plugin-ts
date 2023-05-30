@@ -8,9 +8,6 @@ jobs:
   publish:
     name: Publish to NPM
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [ 18.x ]
     
     steps:  
       - name: 'checkout'
@@ -19,7 +16,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '18.x'
           cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
       - name: Cache node modules
