@@ -15,6 +15,7 @@ export enum EMessageTypes {
   'success',
   'warning',
   'custom',
+  'wait',
 }
 
 // Types
@@ -63,7 +64,7 @@ export interface IMessagesOption {
 
 export interface IMessagesPlugin {
   addNewMessage(message: IMessageBase): void
-  removeMessage(message: IMessageItem): void
-  waitAction(message?: IMessageWait): void
-  stopAction(): void
+  removeMessage(id: TMessageId): void
+  startWait(message?: IMessageItem): void
+  stopWait(id?: TMessageId): void
 }
