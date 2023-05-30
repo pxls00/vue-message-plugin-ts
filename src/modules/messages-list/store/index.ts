@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import type {
   IMessageItem,
   IMessageWait,
-} from '@/modules/messages-list/components/messages-item/index.types'
+} from '@/modules/messages-list/index.types'
 import type { EPositionMessages } from '@/modules/messages-list/index.types'
 
 export const useMessageStore = defineStore('messages', () => {

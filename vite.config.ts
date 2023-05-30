@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [vue(), 
     typescript2({
       check: false,
-      include: ['src/**/*.ts', 'src/components/*.vue'],
+      include: ['src/modules/messages-list/index.types.ts', 'src/components/*.vue'],
       tsconfigOverride: {
         compilerOptions: {
           sourceMap: true,
