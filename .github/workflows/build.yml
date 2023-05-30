@@ -13,10 +13,6 @@ jobs:
     if: ${{github.event.push.commits > 1 && github.event.pull_request}}
 
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node: [ 18.x ]
 
     steps:
       - uses: "actions/checkout@v3"
@@ -24,7 +20,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '18.x'
           cache: 'yarn'
       
       - name: Cache node modules

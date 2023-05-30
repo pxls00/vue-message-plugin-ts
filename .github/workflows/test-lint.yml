@@ -9,17 +9,13 @@ jobs:
     name: 'Test & Check' 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node: [ 18.x ]
-
     steps:
       - uses: "actions/checkout@v3"
       
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '18.x'
           cache: 'yarn'
       
       - name: Cache node modules
