@@ -15,9 +15,8 @@
           v-if="!message.img"
           :data-testid="`message__img-block-${message.type}`"
           :class="`message__img-${message.type}`"
-        >
-          {{ getMessageImgBlockContent }}
-        </div>
+          v-html="getMessageImgBlockContent"
+        ></div>
         <img
           v-else
           :src="getFieldValue(message.img)"

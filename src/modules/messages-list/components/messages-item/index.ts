@@ -3,7 +3,11 @@ import getMessageClass from '@/modules/messages-list/helpers/get-message-class'
 
 // Types
 import type { PropType } from 'vue'
-import type { IMessageItem, IMessageWait, TMessageField } from './index.types'
+import type {
+  IMessageItem,
+  IMessageWait,
+  TMessageField,
+} from '@/modules/messages-list/index.types'
 
 export default defineComponent({
   name: 'MessageItem',
@@ -41,7 +45,7 @@ export default defineComponent({
 
     const getMessageImgBlockContent = computed(() => {
       if (props.message.type === 'success') {
-        return '&#10003;'
+        return `&#10003;`
       } else if (props.message.type === 'warning') {
         return '!'
       } else {

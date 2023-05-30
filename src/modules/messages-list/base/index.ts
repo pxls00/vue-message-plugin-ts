@@ -6,7 +6,7 @@ import { MESSAGE_WAIT_ACTION_CREDENTIALS } from '@/modules/messages-list/constan
 import type {
   IMessageItem,
   IMessageWait,
-} from '@/modules/messages-list/components/messages-item/index.types'
+} from '@/modules/messages-list/index.types'
 
 export default defineComponent({
   name: 'MessageList',
