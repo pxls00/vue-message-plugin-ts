@@ -23,12 +23,12 @@
 
 <script setup lang="ts">
 import { inject } from 'vue'
-import type { IMessagesPlugin } from '@/modules/messages-list/index.types'
+import type { IMessagesPlugin, IMessageBase } from '@/modules/messages-list/index.types'
+import {  } from './modules/messages-list/index.types';
 
 const message = inject('message') as IMessagesPlugin
 function newMessage() {
   message.addNewMessage({
-    id: 1,
     body: {
       value: {
         title: 'Scott',
@@ -41,7 +41,7 @@ function newMessage() {
       class: ['test_1', 'test_2'],
     },
     type: 'custom',
-  })
+  } as unknown as IMessageBase)
 }
 </script>
 
