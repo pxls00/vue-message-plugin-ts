@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { MESSAGE_WAIT_ACTION_CREDENTIALS } from '@/modules/messages-list/constants/default-data'
-import checkIsExistsMessageAlready from '@/modules/messages-list/helpers/check-is-exists-message-already'
+import checkIsNotExistsMessage from '@/modules/messages-list/helpers/check-is-not-exists-message'
 
 import type { IMessageItem } from '@/modules/messages-list/index.types'
 import type {
@@ -14,7 +14,7 @@ export const useMessageStore = defineStore('messages', () => {
   const position = ref<keyof typeof EPositionMessages>('top-right')
 
   function newMessage(message: IMessageItem): void {
-    if (checkIsExistsMessageAlready(message, messages.value)) {
+    if (checkIsNotExistsMessage(message, messages.value)) {
       if (message.type == 'wait') {
         messages.value.unshift(message)
       } else {
