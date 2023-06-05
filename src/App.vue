@@ -2,29 +2,7 @@
   <v-message />
 </template>
 
-<script setup lang="ts">
-import { inject } from 'vue'
-import type { IMessagesPlugin, IMessageBase } from '@/modules/messages-list/index.types'
-import {  } from './modules/messages-list/index.types';
-
-const message = inject('message') as IMessagesPlugin
-function newMessage() {
-  message.addNewMessage({
-    body: {
-      value: {
-        title: 'Scott',
-        body: 'True Alpha in beacon hills',
-      },
-      class: ['test_1', 'test_2'],
-    },
-    img: {
-      value: '/public/vite.svg',
-      class: ['test_1', 'test_2'],
-    },
-    type: 'custom',
-  } as unknown as IMessageBase)
-}
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss">
 body {
