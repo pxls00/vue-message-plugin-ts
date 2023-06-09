@@ -19,15 +19,4 @@ body {
   box-sizing: border-box;
   font-family: 'Noto Sans';
 }
-
-.message__list {
-  max-width: 370px;
-  width: 100%;
-  margin-left: auto;
-  margin-top: 10px;
-  margin-right: 10px;
-  position: fixed;
-  right: 0;
-  top: 0;
-}
 </style>
