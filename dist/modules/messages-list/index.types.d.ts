@@ -38,7 +38,7 @@ export interface IMessagesOption {
     position?: keyof typeof EPositionMessages;
 }
 export interface IMessagesPlugin {
-    addNewMessage(message: IMessageBase): void;
+    addNewMessage(message: IMessageItem): void;
     removeMessage(id: TMessageId): void;
     startWait(message?: IMessageItem): void;
     stopWait(id?: TMessageId): void;
