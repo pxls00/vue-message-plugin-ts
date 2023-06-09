@@ -34,7 +34,7 @@ const app = createApp(App)
 
 app.use(Message)
 // or
-app.use(Message as Message, options?: { position?: PositionMessages } as MessagesOption)
+app.use(Message, options?: { position?: IMessagesOption } as IMessagesOption)
 
 app.mount('#app')
 ```
@@ -68,12 +68,12 @@ function errorAction () {
   })
 }
 
-function waitAction () {
-  message.waitAction()
+function startWait () {
+  message.startWait()
 }
 
-function stopAction () {
-  message.stopAction()
+function stopWait () {
+  message.stopWait()
 }
 
 </script>
@@ -91,56 +91,46 @@ function stopAction () {
 ### Messages
 | Attribute | Descripttion | Type | Optional value | Default |
 | --- | --- | --- | --- | --- |
-| addNewMessage | Adding a new message | (message: Message) ⇒ void | Message | — |
-| removeMessage | Remove message by id | (id: MessageId) ⇒ void | MessageId | — |
-| waitAction | Wait loader message | (message?: MessageWait) ⇒ void | MessageWait |  |
-| stopAction | Stop wait loader message | () ⇒ void |  |  |
+| addNewMessage | Adding a new message | (message: IMessageItem) ⇒ void | IMessageItem | — |
+| removeMessage | Remove message by id | (id: TMessageId) ⇒ void | TMessageId | — |
+| startWait | Wait loader message | (message?: IMessageItem) ⇒ void | IMessageItem |  |
+| stopWait | Stop wait loader message | (id?: TMessageId) ⇒ void | TMessageId |  |
 
 <br />
 
 ### Message for create (Message)
 | Attribute | Descripttion | Type | Optional value | Default | required |
 | --- | --- | --- | --- | --- | --- |
-| title | Title of message | MessageItemField | any | Message | — | true |
-| duration | Duration of message, if you don't add duration then you have to remove it yourself | number |  | — | false |
-| type | Type of message | MessageItemType | ‘error’, ‘success’, ‘warning’, ‘custom’, ‘wait’ | — | true |
-| img | Icon image of message | MessageItemField  |  | — | false |
-| class | Class of message | MessageItemCLass |  | — | false |
-| key?: string | Key of message | string |  | — | false |
-
-<br />
-
-### Message wait loader for create (MessageWait)
-| Attribute | Descripttion | Type | Optional value | Default | required |
-| --- | --- | --- | --- | --- | --- |
-| title | Title of message | MessageItemField | any | Message | — | true |
-| type | Type of message | MessageItemType | ‘wait’ | — | false |
-| img | Icon image of message | MessageItemField  |  | — | false |
-| class | Class of message | MessageItemCLass |  | — | false |
+| body | Body of message | TMessageField<T> | — | — | — | true |
+| duration | Duration of message, if you don't add duration then you have to remove it yourself | number | — | — | false |
+| type | Type of message | TMessageTypes | ‘error’, ‘success’, ‘warning’, ‘custom’, ‘wait’ | — | true |
+| img | Icon image of message | TMessageField  | — | — | false |
+| class | Class of message | TMessageClass | — | — | false |
+| key?: string | Key of message | string | — | — | false |
 
 <br />
 <br />
 
 
 ### Types List
-- type MessageItemFIeld = string | {value: string | any, class: MessageItemClass}
-- type MessageItemType = ‘error’ | ‘success’ | ‘warning’ | ‘custom’ | ‘wait’
-- type MessageItemCLass = string | string[]
-- type MessageId = number | string
+- type TMessageField = string | {value: string | any, class: TMessageClass}
+- type TMessageTypes = ‘error’ | ‘success’ | ‘warning’ | ‘custom’ | ‘wait’
+- type TMessageClass = string | string[]
+- type TMessageId = number | string
 
 ### Template, Slot names
 | Name | Descripttion | Value |
 | --- | --- | --- |
-| message__img-wait | Message slot name for wait messages icon image | MessageItem |
-| message__img-success | Message slot name for success messages icon image | MessageItem |
-| message__img-error | Message slot name for error messages icon image | MessageItem |
-| message__img-warning | Message slot name for warning messages icon image | MessageItem |
-| message__img-custom | Message slot name for custom messages icon image | MessageItem |
-| message__title-wait | Message slot name for wait messages title | MessageItem |
-| message__title-success | Message slot name for success messages title | MessageItem |
-| message__title-warning | Message slot name for warning messages title | MessageItem |
-| message__title-error | Message slot name for error messages title | MessageItem |
-| message__title-custom | Message slot name for custom messages title | MessageItem |
+| message__img-wait | Message slot name for wait messages icon image | IMessageItem |
+| message__img-success | Message slot name for success messages icon image | IMessageItem |
+| message__img-error | Message slot name for error messages icon image | IMessageItem |
+| message__img-warning | Message slot name for warning messages icon image | IMessageItem |
+| message__img-custom | Message slot name for custom messages icon image | IMessageItem |
+| message__title-wait | Message slot name for wait messages title | IMessageItem |
+| message__title-success | Message slot name for success messages title | IMessageItem |
+| message__title-warning | Message slot name for warning messages title | IMessageItem |
+| message__title-error | Message slot name for error messages title | IMessageItem |
+| message__title-custom | Message slot name for custom messages title | IMessageItem |
 
 
 ## License

@@ -1,11 +1,9 @@
 import { useMessageStore } from '../store'
 
-import createMessage from '../helpers/generate-message'
 import MessagesList from '../base/index.vue'
 
 import type {
   IMessageItem,
-  IMessageBase,
   IMessagesOption,
   IMessagesPlugin,
   TMessageId,
@@ -19,10 +17,8 @@ export default {
       store.position = options.position
     }
 
-    function addNewMessage(message: IMessageBase): void {
-      const createdMessage: IMessageItem = createMessage(message)
-
-      store.newMessage(createdMessage)
+    function addNewMessage(message: IMessageItem): void {
+      store.newMessage(message)
     }
 
     function removeMessage(id: TMessageId): void {

@@ -1,6 +1,14 @@
 @import 'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap';
 
 .message__list {
+  max-width: 370px;
+  width: 100%;
+  margin-left: auto;
+  margin-top: 10px;
+  margin-right: 10px;
+  position: fixed;
+  right: 0;
+  top: 0;
   &--top-right {
     right: 0;
     top: 0;
