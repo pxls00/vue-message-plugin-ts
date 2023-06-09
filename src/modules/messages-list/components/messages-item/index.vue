@@ -31,7 +31,7 @@
       data-testid="message__title-block"
     >
       <slot
-        :name="`message__title-${message.type}`"
+        :name="`message__body-${message.type}`"
         :item="{ ...message }"
       >
         <p
