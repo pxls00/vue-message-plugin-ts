@@ -132,6 +132,15 @@ function stopWait () {
 | message__title-error | Message slot name for error messages title | IMessageItem |
 | message__title-custom | Message slot name for custom messages title | IMessageItem |
 
+<br>
+<br>
+
+### Tip !!
+You can add wait message with method startWait and this method creates default message, if you want to add custom wait message you can use method addNewMessage() and then if you want to stop this custom message u can use stopWait agait but with argument id that has been given when created message so you can create default wait message also custom wait message 
+
+
+<br>
+<br>
 
 ## License
 
