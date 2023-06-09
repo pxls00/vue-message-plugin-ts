@@ -55,7 +55,7 @@ export interface IMessagesOption {
 }
 
 export interface IMessagesPlugin {
-  addNewMessage(message: IMessageBase): void
+  addNewMessage(message: IMessageItem): void
   removeMessage(id: TMessageId): void
   startWait(message?: IMessageItem): void
   stopWait(id?: TMessageId): void

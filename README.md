@@ -91,7 +91,7 @@ function stopWait () {
 ### Messages
 | Attribute | Descripttion | Type | Optional value | Default |
 | --- | --- | --- | --- | --- |
-| addNewMessage | Adding a new message | (message: IMessageBase) ⇒ void | IMessageBase | — |
+| addNewMessage | Adding a new message | (message: IMessageItem) ⇒ void | IMessageItem | — |
 | removeMessage | Remove message by id | (id: TMessageId) ⇒ void | TMessageId | — |
 | startWait | Wait loader message | (message?: IMessageItem) ⇒ void | IMessageItem |  |
 | stopWait | Stop wait loader message | (id?: TMessageId) ⇒ void | TMessageId |  |
@@ -126,11 +126,11 @@ function stopWait () {
 | message__img-error | Message slot name for error messages icon image | IMessageItem |
 | message__img-warning | Message slot name for warning messages icon image | IMessageItem |
 | message__img-custom | Message slot name for custom messages icon image | IMessageItem |
-| message__body-wait | Message slot name for wait messages body | IMessageItem |
-| message__body-success | Message slot name for success messages body | IMessageItem |
-| message__body-warning | Message slot name for warning messages body | IMessageItem |
-| message__body-error | Message slot name for error messages body | IMessageItem |
-| message__body-custom | Message slot name for custom messages body | IMessageItem |
+| message__title-wait | Message slot name for wait messages title | IMessageItem |
+| message__title-success | Message slot name for success messages title | IMessageItem |
+| message__title-warning | Message slot name for warning messages title | IMessageItem |
+| message__title-error | Message slot name for error messages title | IMessageItem |
+| message__title-custom | Message slot name for custom messages title | IMessageItem |
 
 
 ## License
